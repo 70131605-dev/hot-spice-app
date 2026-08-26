@@ -1,0 +1,10 @@
+{
+  "description": "Manage restaurant operations with a premium website featuring menu browsing, table reservations, user accounts, and an admin dashboard for seamless control.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

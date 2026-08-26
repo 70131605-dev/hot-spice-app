@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($procs = Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match '8124' -and $_.Name -match 'php|cmd' }; $procs | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }; \"stopped\")",
+      "Bash(php artisan *)"
+    ]
+  }
+}
