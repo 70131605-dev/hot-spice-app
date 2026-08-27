@@ -55,7 +55,7 @@ export default function Navbar() {
                 style={{ fontFamily: "'Holtwood One SC', serif" }}
                 className="text-[1.8rem] sm:text-[2.25rem] font-black tracking-[0.04em] group-hover:opacity-90 transition-opacity"
               >
-                <span className="text-primary">Hot</span>
+                <span className="text-secondary">Hot</span>
                 <span className="text-white">&amp;Spice</span>
               </span>
             </Link>

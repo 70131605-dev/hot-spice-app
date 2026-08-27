@@ -89,7 +89,7 @@ export default function Reservation() {
       <section className="relative h-64 flex items-end pb-12 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&h=500&fit=crop&auto=format&q=80"
           alt="Reservation" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-darkest/88 via-primary-darkest/40 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Secure Your Seat</span>

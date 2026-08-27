@@ -77,7 +77,7 @@ export default function Menu() {
       <section className="relative h-64 flex items-end pb-12 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&h=500&fit=crop&auto=format&q=80"
           alt="Menu" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-darkest/88 via-primary-darkest/40 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Explore</span>
@@ -233,7 +233,7 @@ function MenuCard({ item, index, onAdd, onFavorite, isFav }: {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.04 }}
-      className="bg-secondary rounded-2xl shadow-warm overflow-hidden group hover-lift"
+      className="bg-white rounded-2xl shadow-warm overflow-hidden group hover-lift border border-primary/10"
     >
       <div className="relative h-48 overflow-hidden">
         <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -260,24 +260,24 @@ function MenuCard({ item, index, onAdd, onFavorite, isFav }: {
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-center gap-1">
             {Array.from({ length: 5 }, (_, i) => (
-              <Star key={i} size={11} className={i < Math.floor(item.rating) ? 'text-white fill-white' : 'text-white/30 fill-white/30'} />
+              <Star key={i} size={11} className={i < Math.floor(item.rating) ? 'text-secondary fill-secondary' : 'text-muted-light fill-muted-light'} />
             ))}
-            <span className="text-xs text-white/80 ml-1">{item.rating} ({item.ratingCount})</span>
+            <span className="text-xs text-muted ml-1">{item.rating} ({item.ratingCount})</span>
           </div>
           {!item.isAvailable ? (
-            <span className="text-xs text-white/70 font-medium">Unavailable</span>
+            <span className="text-xs text-muted font-medium">Unavailable</span>
           ) : (
-            <span className="text-xs text-white font-medium">Available</span>
+            <span className="text-xs text-success font-medium">Available</span>
           )}
         </div>
-        <h3 className="font-semibold text-white text-base mb-1">{item.name}</h3>
-        <p className="text-white/80 text-xs line-clamp-2 mb-3 leading-relaxed">{item.description}</p>
-        <div className="flex items-center gap-3 text-xs text-white/80 mb-4">
+        <h3 className="font-semibold text-primary text-base mb-1">{item.name}</h3>
+        <p className="text-muted text-xs line-clamp-2 mb-3 leading-relaxed">{item.description}</p>
+        <div className="flex items-center gap-3 text-xs text-muted mb-4">
           <span className="flex items-center gap-1"><Clock size={11} /> {item.prepTime}m</span>
           <span className="flex items-center gap-1"><Flame size={11} /> {item.calories} cal</span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="inline-block bg-white text-primary text-sm font-bold px-3.5 py-1.5 rounded-full">{formatPrice(item.price)}</span>
+          <span className="inline-block bg-secondary text-white text-sm font-bold px-3.5 py-1.5 rounded-full">{formatPrice(item.price)}</span>
           <button
             onClick={onAdd}
             disabled={!item.isAvailable}

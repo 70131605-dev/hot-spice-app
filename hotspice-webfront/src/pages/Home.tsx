@@ -134,9 +134,22 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop&auto=format&q=90"
             alt="Hot & Spice Restaurant"
             className="w-full h-full object-cover"
+            style={{ filter: 'saturate(1.08) contrast(1.04)' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30" />
+          {/* Scrim is brand teal rather than black - black flattens the photo
+              into grey, the teal keeps it warm. Heavy at the top and bottom
+              where the navbar and stats row need contrast, open through the
+              middle so the dish stays visible. */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary-darkest/85 via-primary-darkest/20 to-primary-darkest/90" />
+          {/* A pool of shade behind the copy only, so the headline holds its
+              contrast without dimming the whole frame. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(ellipse 64% 54% at 50% 45%, rgba(6,47,56,0.74) 0%, rgba(6,47,56,0.38) 52%, transparent 78%)',
+            }}
+          />
         </div>
 
         {/* Hero Content */}
@@ -155,11 +168,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 [text-shadow:0_2px_18px_rgba(6,47,56,0.55)]"
           >
             Delicious Food,{' '}
             <span className="relative">
-              <span className="text-primary">Great</span>
+              <span className="text-secondary">Great</span>
             </span>{' '}
             Experience
           </motion.h1>
@@ -168,7 +181,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_12px_rgba(6,47,56,0.6)]"
           >
             Where world-class chefs transform the finest ingredients into unforgettable dining moments. Every plate tells a story worth savoring.
           </motion.p>
@@ -528,7 +541,7 @@ export default function Home() {
               alt="Restaurant Interior"
               className="w-full h-full object-cover absolute inset-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-darkest/92 via-primary-darkest/55 to-primary-darkest/10" />
             <div className="relative z-10 grid lg:grid-cols-2 gap-8 p-8 lg:p-14">
               <FadeIn>
                 <div className="text-white space-y-4">
