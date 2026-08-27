@@ -116,8 +116,8 @@ export default function Checkout() {
       <div className="mt-6">
         <h2 className="font-semibold">Order Type</h2>
         <div className="flex gap-3 mt-3">
-          <button onClick={() => setOrderType('delivery')} className={`px-4 py-2 rounded ${orderType==='delivery'? 'bg-[#0D5969] text-white': 'bg-white border'}`}>Delivery</button>
-          <button onClick={() => setOrderType('pickup')} className={`px-4 py-2 rounded ${orderType==='pickup'? 'bg-[#0D5969] text-white': 'bg-white border'}`}>Pickup</button>
+          <button onClick={() => setOrderType('delivery')} className={`px-4 py-2 rounded ${orderType==='delivery'? 'bg-primary text-white': 'bg-white border'}`}>Delivery</button>
+          <button onClick={() => setOrderType('pickup')} className={`px-4 py-2 rounded ${orderType==='pickup'? 'bg-primary text-white': 'bg-white border'}`}>Pickup</button>
         </div>
       </div>
 
@@ -126,13 +126,13 @@ export default function Checkout() {
           <h2 className="font-semibold">Delivery Address</h2>
           <div className="mt-3 space-y-2">
             {addresses.map((a:any) => (
-              <label key={a.id} className={`block p-3 rounded border ${!useNewAddress && selectedAddressId===a.id ? 'border-[#0D5969] bg-[#0D5969]/10' : 'border-gray-200'}`}>
+              <label key={a.id} className={`block p-3 rounded border ${!useNewAddress && selectedAddressId===a.id ? 'border-primary bg-primary/10' : 'border-gray-200'}`}>
                 <input type="radio" name="addr" checked={!useNewAddress && selectedAddressId===a.id} onChange={() => { setUseNewAddress(false); setSelectedAddressId(a.id)}} />
                 <span className="ml-2 font-medium">{a.label}</span>
                 <div className="text-xs text-gray-500">{a.address_line}</div>
               </label>
             ))}
-            <label className={`block p-3 rounded border ${useNewAddress ? 'border-[#0D5969] bg-[#0D5969]/10' : 'border-gray-200'}`}>
+            <label className={`block p-3 rounded border ${useNewAddress ? 'border-primary bg-primary/10' : 'border-gray-200'}`}>
               <input type="radio" name="addr" checked={useNewAddress} onChange={() => setUseNewAddress(true)} />
               <span className="ml-2 font-medium">Use a different address</span>
               {useNewAddress && (
@@ -156,7 +156,7 @@ export default function Checkout() {
             {couponError && <div className="text-sm text-red-600 mt-2">{couponError}</div>}
           </div>
         ) : (
-          <button className="mt-2 text-sm text-[#0D5969]" onClick={()=>setShowCoupon(true)}>Have a coupon?</button>
+          <button className="mt-2 text-sm text-primary" onClick={()=>setShowCoupon(true)}>Have a coupon?</button>
         )}
       </div>
 
@@ -178,7 +178,7 @@ export default function Checkout() {
       </div>
 
       <div className="mt-6 flex justify-end">
-        <button onClick={handlePlaceOrder} disabled={loading} className="bg-[#0D5969] text-white px-6 py-3 rounded">
+        <button onClick={handlePlaceOrder} disabled={loading} className="bg-primary text-white px-6 py-3 rounded">
           {loading ? 'Placing...' : `Place Order — Rs. ${Math.round(total)}`}
         </button>
       </div>

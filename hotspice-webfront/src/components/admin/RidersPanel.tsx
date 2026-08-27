@@ -98,7 +98,7 @@ export default function RidersPanel() {
     <div className="space-y-5">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <h1 className="text-xl font-bold text-white">Riders &amp; Delivery</h1>
-        <button onClick={openAdd} className="flex items-center gap-2 px-4 py-2 bg-[#0D5969] hover:bg-[#093E4A] text-white text-sm font-semibold rounded-xl transition-colors">
+        <button onClick={openAdd} className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-xl transition-colors">
           <Plus size={14} /> Add Rider
         </button>
       </div>
@@ -114,15 +114,15 @@ export default function RidersPanel() {
           {/* Riders list */}
           <div className="space-y-3">
             {riders.length === 0 && (
-              <div className="bg-[#1A1A1A] rounded-2xl p-6 border border-white/5 text-center text-white/30 text-sm">
+              <div className="bg-dark rounded-2xl p-6 border border-white/5 text-center text-white/30 text-sm">
                 No riders yet. Add your first rider to start assigning deliveries.
               </div>
             )}
             {riders.map((rider) => (
-              <div key={rider.id} className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5">
+              <div key={rider.id} className="bg-dark rounded-2xl p-5 border border-white/5">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-[#0D5969]/20 flex items-center justify-center text-[#0D5969] flex-shrink-0">
+                    <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
                       <Bike size={15} />
                     </div>
                     <div>
@@ -131,10 +131,10 @@ export default function RidersPanel() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${rider.is_active ? 'bg-[#2ECC71]/10 text-[#2ECC71]' : 'bg-white/5 text-white/40'}`}>
+                    <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${rider.is_active ? 'bg-success/10 text-success' : 'bg-white/5 text-white/40'}`}>
                       {rider.is_active ? 'Active' : 'Inactive'}
                     </span>
-                    <button onClick={() => openEdit(rider)} className="p-1.5 rounded-lg bg-white/5 hover:bg-[#F77F00]/20 text-white/40 hover:text-[#F77F00] transition-colors">
+                    <button onClick={() => openEdit(rider)} className="p-1.5 rounded-lg bg-white/5 hover:bg-secondary/20 text-white/40 hover:text-secondary transition-colors">
                       <Edit2 size={13} />
                     </button>
                     <button onClick={() => { setDeleteConfirmId(rider.id); setDeleteError('') }} className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-white/40 hover:text-red-400 transition-colors">
@@ -172,7 +172,7 @@ export default function RidersPanel() {
           </div>
 
           {/* Unassigned deliveries */}
-          <div className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5 h-fit">
+          <div className="bg-dark rounded-2xl p-5 border border-white/5 h-fit">
             <h3 className="font-semibold text-white text-sm mb-4">Unassigned Deliveries</h3>
             {unassigned.length === 0 ? (
               <p className="text-white/30 text-xs">Nothing waiting on a rider right now.</p>
@@ -187,7 +187,7 @@ export default function RidersPanel() {
                     <select
                       defaultValue=""
                       onChange={(e) => e.target.value && assignRider(o.id, Number(e.target.value))}
-                      className="bg-[#111111] border border-white/10 rounded-lg px-2 py-1.5 text-xs text-white focus:outline-none focus:border-[#0D5969]"
+                      className="bg-dark-deep border border-white/10 rounded-lg px-2 py-1.5 text-xs text-white focus:outline-none focus:border-primary"
                     >
                       <option value="" disabled>Assign rider</option>
                       {riders.filter((r) => r.is_active).map((r) => (
@@ -204,7 +204,7 @@ export default function RidersPanel() {
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={() => setModalOpen(false)}>
-          <div className="bg-[#1A1A1A] rounded-2xl border border-white/10 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-dark rounded-2xl border border-white/10 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
             <div className="p-5 border-b border-white/5 flex items-center justify-between">
               <h3 className="text-white font-semibold">{editingId ? 'Edit Rider' : 'Add Rider'}</h3>
               <button onClick={() => setModalOpen(false)} className="p-1.5 rounded-lg hover:bg-white/5 text-white/40 hover:text-white">
@@ -218,7 +218,7 @@ export default function RidersPanel() {
                 <input
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]"
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary"
                 />
               </div>
               <div>
@@ -226,7 +226,7 @@ export default function RidersPanel() {
                 <input
                   value={form.phone}
                   onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]"
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary"
                 />
               </div>
               {editingId && (
@@ -235,7 +235,7 @@ export default function RidersPanel() {
                     type="checkbox"
                     checked={form.is_active}
                     onChange={(e) => setForm((f) => ({ ...f, is_active: e.target.checked }))}
-                    className="accent-[#0D5969]"
+                    className="accent-primary"
                   />
                   Active
                 </label>
@@ -243,7 +243,7 @@ export default function RidersPanel() {
               <button
                 onClick={submitForm}
                 disabled={saving || !form.name || !form.phone}
-                className="w-full py-3 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm"
+                className="w-full py-3 bg-primary hover:bg-primary-dark disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm"
               >
                 {saving ? 'Saving...' : editingId ? 'Save Changes' : 'Add Rider'}
               </button>

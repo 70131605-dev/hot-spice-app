@@ -17,7 +17,7 @@ export default function RootLayout() {
   const isAuth = AUTH_PATHS.includes(pathname)
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ fontFamily: "'Poppins', sans-serif", backgroundColor: '#FFF8F0' }}>
+    <div className="min-h-screen flex flex-col" style={{ fontFamily: "'Poppins', sans-serif", backgroundColor: 'var(--color-cream)' }}>
       {!isDashboard && <Navbar />}
       <main className="flex-1">
         <Outlet />

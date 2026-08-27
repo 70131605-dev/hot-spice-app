@@ -207,7 +207,7 @@ export default function ProductsPanel() {
           <button onClick={openAddCategory} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold rounded-xl transition-colors">
             <Plus size={14} /> Category
           </button>
-          <button onClick={openAddItem} className="flex items-center gap-2 px-4 py-2 bg-[#0D5969] hover:bg-[#093E4A] text-white text-sm font-semibold rounded-xl transition-colors">
+          <button onClick={openAddItem} className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-xl transition-colors">
             <Plus size={14} /> Add Item
           </button>
         </div>
@@ -219,7 +219,7 @@ export default function ProductsPanel() {
       <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
         <button
           onClick={() => setCategoryFilter(null)}
-          className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors flex-shrink-0 ${categoryFilter === null ? 'bg-[#0D5969] text-white' : 'bg-white/5 text-white/50 hover:text-white'}`}
+          className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors flex-shrink-0 ${categoryFilter === null ? 'bg-primary text-white' : 'bg-white/5 text-white/50 hover:text-white'}`}
         >
           All ({items.length})
         </button>
@@ -227,7 +227,7 @@ export default function ProductsPanel() {
           <div key={cat.id} className="relative flex-shrink-0 group">
             <button
               onClick={() => setCategoryFilter(cat.id)}
-              className={`flex items-center gap-1.5 pl-3 pr-2 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${categoryFilter === cat.id ? 'bg-[#0D5969] text-white' : 'bg-white/5 text-white/50 hover:text-white'}`}
+              className={`flex items-center gap-1.5 pl-3 pr-2 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${categoryFilter === cat.id ? 'bg-primary text-white' : 'bg-white/5 text-white/50 hover:text-white'}`}
             >
               <span>{cat.icon}</span> {cat.name} ({cat.menu_items_count ?? 0})
               <span onClick={(e) => { e.stopPropagation(); openEditCategory(cat) }} className="ml-1 p-0.5 rounded hover:bg-white/20">
@@ -253,11 +253,11 @@ export default function ProductsPanel() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search items..."
-          className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl pl-9 pr-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#0D5969]"
+          className="w-full bg-dark border border-white/10 rounded-xl pl-9 pr-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-primary"
         />
       </div>
 
-      <div className="bg-[#1A1A1A] rounded-2xl border border-white/5 overflow-hidden">
+      <div className="bg-dark rounded-2xl border border-white/5 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -282,7 +282,7 @@ export default function ProductsPanel() {
                       <img src={item.image || undefined} alt={item.name} className="w-10 h-10 rounded-xl object-cover flex-shrink-0 bg-white/5" />
                       <div>
                         <span className="text-white text-sm font-medium">{item.name}</span>
-                        {item.is_featured && <span className="ml-2 text-[10px] text-[#F77F00]">★ Featured</span>}
+                        {item.is_featured && <span className="ml-2 text-[10px] text-secondary">★ Featured</span>}
                       </div>
                     </div>
                   </td>
@@ -290,7 +290,7 @@ export default function ProductsPanel() {
                     <span className="text-white/50 text-xs">{item.category?.icon} {item.category?.name}</span>
                   </td>
                   <td className="p-4">
-                    <span className="text-[#F77F00] text-sm font-semibold">{formatPrice(Number(item.price))}</span>
+                    <span className="text-secondary text-sm font-semibold">{formatPrice(Number(item.price))}</span>
                   </td>
                   <td className="p-4 hidden md:table-cell">
                     <span className="text-white/60 text-xs flex items-center gap-1"><Star size={11} className="fill-white/40" /> {item.rating} ({item.rating_count})</span>
@@ -299,13 +299,13 @@ export default function ProductsPanel() {
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => toggleField(item, 'is_available')}
-                        className={`text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${item.is_available ? 'bg-[#2ECC71]/10 text-[#2ECC71]' : 'bg-red-500/10 text-red-400'}`}
+                        className={`text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${item.is_available ? 'bg-success/10 text-success' : 'bg-red-500/10 text-red-400'}`}
                       >
                         {item.is_available ? 'Available' : 'Sold Out'}
                       </button>
                       <button
                         onClick={() => toggleField(item, 'is_featured')}
-                        className={`text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${item.is_featured ? 'bg-[#F77F00]/10 text-[#F77F00]' : 'bg-white/5 text-white/30'}`}
+                        className={`text-xs px-2.5 py-1 rounded-full font-medium transition-colors ${item.is_featured ? 'bg-secondary/10 text-secondary' : 'bg-white/5 text-white/30'}`}
                       >
                         Featured
                       </button>
@@ -313,7 +313,7 @@ export default function ProductsPanel() {
                   </td>
                   <td className="p-4">
                     <div className="flex items-center gap-2">
-                      <button onClick={() => openEditItem(item)} className="p-1.5 rounded-lg bg-white/5 hover:bg-[#F77F00]/20 text-white/40 hover:text-[#F77F00] transition-colors">
+                      <button onClick={() => openEditItem(item)} className="p-1.5 rounded-lg bg-white/5 hover:bg-secondary/20 text-white/40 hover:text-secondary transition-colors">
                         <Edit2 size={13} />
                       </button>
                       <button
@@ -324,7 +324,7 @@ export default function ProductsPanel() {
                       </button>
                     </div>
                     {deleteConfirmId === item.id && (
-                      <div className="absolute right-6 mt-2 p-3 bg-[#1A1A1A] border border-red-500/30 rounded-xl z-10 w-56">
+                      <div className="absolute right-6 mt-2 p-3 bg-dark border border-red-500/30 rounded-xl z-10 w-56">
                         <p className="text-xs text-white/60 mb-2">Delete {item.name}?</p>
                         {itemDeleteError && <p className="text-xs text-red-400 mb-2">{itemDeleteError}</p>}
                         <div className="flex gap-2">
@@ -344,7 +344,7 @@ export default function ProductsPanel() {
       {/* Category modal */}
       {catModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={() => setCatModalOpen(false)}>
-          <div className="bg-[#1A1A1A] rounded-2xl border border-white/10 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-dark rounded-2xl border border-white/10 w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
             <div className="p-5 border-b border-white/5 flex items-center justify-between">
               <h3 className="text-white font-semibold">{editingCatId ? 'Edit Category' : 'Add Category'}</h3>
               <button onClick={() => setCatModalOpen(false)} className="p-1.5 rounded-lg hover:bg-white/5 text-white/40 hover:text-white"><X size={16} /></button>
@@ -354,25 +354,25 @@ export default function ProductsPanel() {
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Name</label>
                 <input value={catForm.name} onChange={(e) => setCatForm((f) => ({ ...f, name: e.target.value }))}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Icon (emoji)</label>
                 <input value={catForm.icon} onChange={(e) => setCatForm((f) => ({ ...f, icon: e.target.value }))} placeholder="🍕"
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Description</label>
                 <textarea value={catForm.description} onChange={(e) => setCatForm((f) => ({ ...f, description: e.target.value }))} rows={2}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               {editingCatId && (
                 <label className="flex items-center gap-2 text-sm text-white/70">
-                  <input type="checkbox" checked={catForm.is_active} onChange={(e) => setCatForm((f) => ({ ...f, is_active: e.target.checked }))} className="accent-[#0D5969]" />
+                  <input type="checkbox" checked={catForm.is_active} onChange={(e) => setCatForm((f) => ({ ...f, is_active: e.target.checked }))} className="accent-primary" />
                   Active (visible to customers)
                 </label>
               )}
-              <button onClick={submitCategory} disabled={catSaving || !catForm.name} className="w-full py-3 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm">
+              <button onClick={submitCategory} disabled={catSaving || !catForm.name} className="w-full py-3 bg-primary hover:bg-primary-dark disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm">
                 {catSaving ? 'Saving...' : editingCatId ? 'Save Changes' : 'Add Category'}
               </button>
             </div>
@@ -383,8 +383,8 @@ export default function ProductsPanel() {
       {/* Item modal */}
       {itemModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={() => setItemModalOpen(false)}>
-          <div className="bg-[#1A1A1A] rounded-2xl border border-white/10 w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="p-5 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#1A1A1A]">
+          <div className="bg-dark rounded-2xl border border-white/10 w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="p-5 border-b border-white/5 flex items-center justify-between sticky top-0 bg-dark">
               <h3 className="text-white font-semibold">{editingItemId ? 'Edit Item' : 'Add Item'}</h3>
               <button onClick={() => setItemModalOpen(false)} className="p-1.5 rounded-lg hover:bg-white/5 text-white/40 hover:text-white"><X size={16} /></button>
             </div>
@@ -393,7 +393,7 @@ export default function ProductsPanel() {
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Category</label>
                 <select value={itemForm.category_id} onChange={(e) => setItemForm((f) => ({ ...f, category_id: e.target.value }))}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]">
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary">
                   <option value="" disabled>Select category</option>
                   {categories.map((c) => <option key={c.id} value={c.id}>{c.icon} {c.name}</option>)}
                 </select>
@@ -401,58 +401,58 @@ export default function ProductsPanel() {
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Name</label>
                 <input value={itemForm.name} onChange={(e) => setItemForm((f) => ({ ...f, name: e.target.value }))}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Description</label>
                 <textarea value={itemForm.description} onChange={(e) => setItemForm((f) => ({ ...f, description: e.target.value }))} rows={2}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               <div className="grid grid-cols-3 gap-3">
                 <div>
                   <label className="block text-xs font-medium text-white/50 mb-1.5">Price</label>
                   <input type="number" step="0.01" value={itemForm.price} onChange={(e) => setItemForm((f) => ({ ...f, price: e.target.value }))}
-                    className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                    className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-white/50 mb-1.5">Calories</label>
                   <input type="number" value={itemForm.calories} onChange={(e) => setItemForm((f) => ({ ...f, calories: e.target.value }))}
-                    className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                    className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-white/50 mb-1.5">Prep (min)</label>
                   <input type="number" value={itemForm.prep_time} onChange={(e) => setItemForm((f) => ({ ...f, prep_time: e.target.value }))}
-                    className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                    className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
                 </div>
               </div>
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Image URL</label>
                 <input value={itemForm.image} onChange={(e) => setItemForm((f) => ({ ...f, image: e.target.value }))} placeholder="https://..."
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               <div>
                 <label className="block text-xs font-medium text-white/50 mb-1.5">Tags (comma separated)</label>
                 <input value={itemForm.tags} onChange={(e) => setItemForm((f) => ({ ...f, tags: e.target.value }))} placeholder="vegetarian, bestseller"
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969]" />
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary" />
               </div>
               <div className="flex items-center gap-5">
                 <label className="flex items-center gap-2 text-sm text-white/70">
-                  <input type="checkbox" checked={itemForm.is_available} onChange={(e) => setItemForm((f) => ({ ...f, is_available: e.target.checked }))} className="accent-[#0D5969]" />
+                  <input type="checkbox" checked={itemForm.is_available} onChange={(e) => setItemForm((f) => ({ ...f, is_available: e.target.checked }))} className="accent-primary" />
                   Available
                 </label>
                 <label className="flex items-center gap-2 text-sm text-white/70">
-                  <input type="checkbox" checked={itemForm.is_featured} onChange={(e) => setItemForm((f) => ({ ...f, is_featured: e.target.checked }))} className="accent-[#0D5969]" />
+                  <input type="checkbox" checked={itemForm.is_featured} onChange={(e) => setItemForm((f) => ({ ...f, is_featured: e.target.checked }))} className="accent-primary" />
                   Featured
                 </label>
                 <label className="flex items-center gap-2 text-sm text-white/70">
-                  <input type="checkbox" checked={itemForm.is_special} onChange={(e) => setItemForm((f) => ({ ...f, is_special: e.target.checked }))} className="accent-[#0D5969]" />
+                  <input type="checkbox" checked={itemForm.is_special} onChange={(e) => setItemForm((f) => ({ ...f, is_special: e.target.checked }))} className="accent-primary" />
                   Today's Special
                 </label>
               </div>
               <button
                 onClick={submitItem}
                 disabled={itemSaving || !itemForm.name || !itemForm.price || !itemForm.category_id}
-                className="w-full py-3 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm"
+                className="w-full py-3 bg-primary hover:bg-primary-dark disabled:opacity-50 text-white font-semibold rounded-xl transition-colors text-sm"
               >
                 {itemSaving ? 'Saving...' : editingItemId ? 'Save Changes' : 'Add Item'}
               </button>

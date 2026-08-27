@@ -19,7 +19,7 @@ export default function OrderSuccess(){
       )}
 
       <div className="mt-6">
-        <Link to="/" className="text-[#0D5969]">Back to Home</Link>
+        <Link to="/" className="text-primary">Back to Home</Link>
       </div>
     </div>
   )

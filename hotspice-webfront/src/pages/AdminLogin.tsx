@@ -22,7 +22,7 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-dark-deep flex items-center justify-center px-6 py-12">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function AdminLogin() {
                 {...register('email', { required: 'Email is required' })}
                 type="email"
                 placeholder="admin@hotandspice.pk"
-                className={`w-full pl-10 pr-4 py-3 bg-[#1A1A1A] border rounded-xl text-sm text-white placeholder-white/20 focus:outline-none transition-colors ${errors.email ? 'border-red-500' : 'border-white/10 focus:border-[#0D5969]'}`}
+                className={`w-full pl-10 pr-4 py-3 bg-dark border rounded-xl text-sm text-white placeholder-white/20 focus:outline-none transition-colors ${errors.email ? 'border-red-500' : 'border-white/10 focus:border-primary'}`}
               />
             </div>
             {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
@@ -65,7 +65,7 @@ export default function AdminLogin() {
                 {...register('password', { required: 'Password is required' })}
                 type={showPw ? 'text' : 'password'}
                 placeholder="••••••••"
-                className={`w-full pl-10 pr-11 py-3 bg-[#1A1A1A] border rounded-xl text-sm text-white placeholder-white/20 focus:outline-none transition-colors ${errors.password ? 'border-red-500' : 'border-white/10 focus:border-[#0D5969]'}`}
+                className={`w-full pl-10 pr-11 py-3 bg-dark border rounded-xl text-sm text-white placeholder-white/20 focus:outline-none transition-colors ${errors.password ? 'border-red-500' : 'border-white/10 focus:border-primary'}`}
               />
               <button type="button" onClick={() => setShowPw((v) => !v)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/30 hover:text-white">
                 {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -77,7 +77,7 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3.5 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm"
+            className="w-full py-3.5 bg-primary hover:bg-primary-dark disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm"
           >
             {isSubmitting ? 'Signing In...' : 'Sign In'}
           </button>

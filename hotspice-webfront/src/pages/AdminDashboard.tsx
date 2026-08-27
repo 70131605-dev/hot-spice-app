@@ -11,6 +11,7 @@ import { useAdminAuth } from '@/context/AdminAuthContext'
 import OrdersPanel from '@/components/admin/OrdersPanel'
 import RidersPanel from '@/components/admin/RidersPanel'
 import ProductsPanel from '@/components/admin/ProductsPanel'
+import { brand } from '../lib/theme'
 
 const revenueData = [
   { month: 'Jan', revenue: 42000, orders: 380 },
@@ -23,11 +24,11 @@ const revenueData = [
 ]
 
 const categoryData = [
-  { name: 'Steak', value: 32, color: '#0D5969' },
-  { name: 'Pizza', value: 22, color: '#F77F00' },
-  { name: 'BBQ', value: 18, color: '#2ECC71' },
-  { name: 'Chinese', value: 14, color: '#3498DB' },
-  { name: 'Others', value: 14, color: '#8B7355' },
+  { name: 'Steak', value: 32, color: brand.primary },
+  { name: 'Pizza', value: 22, color: brand.secondary },
+  { name: 'BBQ', value: 18, color: brand.success },
+  { name: 'Chinese', value: 14, color: brand.accent },
+  { name: 'Others', value: 14, color: brand.muted },
 ]
 
 const mockReservations = [
@@ -45,9 +46,9 @@ const mockMessages = [
 ]
 
 const statusConfig: Record<string, { color: string; bg: string }> = {
-  confirmed: { color: 'text-[#2ECC71]', bg: 'bg-[#2ECC71]/10' },
-  pending: { color: 'text-[#F77F00]', bg: 'bg-[#F77F00]/10' },
-  completed: { color: 'text-[#8B7355]', bg: 'bg-[#8B7355]/10' },
+  confirmed: { color: 'text-success', bg: 'bg-success/10' },
+  pending: { color: 'text-secondary', bg: 'bg-secondary/10' },
+  completed: { color: 'text-muted', bg: 'bg-muted/10' },
   cancelled: { color: 'text-red-500', bg: 'bg-red-500/10' },
 }
 
@@ -67,33 +68,33 @@ export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('dashboard')
 
   if (loading) {
-    return <div className="min-h-screen bg-[#0F0F0F]" />
+    return <div className="min-h-screen bg-dark-deep" />
   }
 
   if (!admin) {
     return (
-      <div className="min-h-screen bg-[#0F0F0F] flex items-center justify-center text-white">
+      <div className="min-h-screen bg-dark-deep flex items-center justify-center text-white">
         <div className="text-center p-8">
           <div className="text-5xl mb-4">🚫</div>
           <h2 className="text-2xl font-bold text-white mb-2">Access Denied</h2>
           <p className="text-white/40 mb-6">Admin access required. Please sign in with an admin account.</p>
-          <Link to="/admin/login" className="px-6 py-3 bg-[#0D5969] text-white rounded-full font-semibold text-sm">Sign In as Admin</Link>
+          <Link to="/admin/login" className="px-6 py-3 bg-primary text-white rounded-full font-semibold text-sm">Sign In as Admin</Link>
         </div>
       </div>
     )
   }
 
   const stats = [
-    { label: "Today's Revenue", value: '$4,280', change: '+12%', Icon: DollarSign, color: '#0D5969' },
-    { label: 'Total Orders', value: '2,847', change: '+8%', Icon: ShoppingBag, color: '#F77F00' },
-    { label: 'Active Reservations', value: '34', change: '+5', Icon: Calendar, color: '#0D5969' },
-    { label: 'Avg. Rating', value: '4.9★', change: '+0.1', Icon: Star, color: '#F77F00' },
+    { label: "Today's Revenue", value: '$4,280', change: '+12%', Icon: DollarSign, color: brand.primary },
+    { label: 'Total Orders', value: '2,847', change: '+8%', Icon: ShoppingBag, color: brand.secondary },
+    { label: 'Active Reservations', value: '34', change: '+5', Icon: Calendar, color: brand.primary },
+    { label: 'Avg. Rating', value: '4.9★', change: '+0.1', Icon: Star, color: brand.secondary },
   ]
 
   return (
-    <div className="min-h-screen bg-[#0F0F0F] flex text-white">
+    <div className="min-h-screen bg-dark-deep flex text-white">
       {/* Sidebar */}
-      <aside className="w-60 bg-[#1A1A1A] flex-col hidden md:flex border-r border-white/5">
+      <aside className="w-60 bg-dark flex-col hidden md:flex border-r border-white/5">
         <div className="p-5 border-b border-white/10">
           <Link to="/" className="flex items-center">
             <img src="/logo.png" alt="Hot N Spice" className="h-7 w-auto object-contain" />
@@ -105,11 +106,11 @@ export default function AdminDashboard() {
           {navItems.map(({ id, label, Icon }) => (
             <button key={id} onClick={() => setActiveTab(id)}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                activeTab === id ? 'bg-[#0D5969] text-white' : 'text-white/50 hover:bg-white/5 hover:text-white'
+                activeTab === id ? 'bg-primary text-white' : 'text-white/50 hover:bg-white/5 hover:text-white'
               }`}>
               <Icon size={15} /> {label}
               {id === 'messages' && mockMessages.filter((m) => !m.read).length > 0 && (
-                <span className="ml-auto w-4 h-4 bg-[#0D5969] rounded-full text-white text-xs flex items-center justify-center">
+                <span className="ml-auto w-4 h-4 bg-primary rounded-full text-white text-xs flex items-center justify-center">
                   {mockMessages.filter((m) => !m.read).length}
                 </span>
               )}
@@ -119,7 +120,7 @@ export default function AdminDashboard() {
 
         <div className="p-3 border-t border-white/10">
           <div className="flex items-center gap-2.5 px-3 py-2 mb-2">
-            <div className="w-7 h-7 rounded-full bg-[#0D5969] flex items-center justify-center text-xs font-bold">A</div>
+            <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-xs font-bold">A</div>
             <div>
               <p className="text-xs font-medium text-white">{admin.name}</p>
               <p className="text-xs text-white/30 capitalize">{admin.role}</p>
@@ -132,25 +133,25 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 overflow-auto bg-[#111111]">
+      <main className="flex-1 overflow-auto bg-dark-deep">
         {/* Top Bar */}
-        <div className="bg-[#1A1A1A] border-b border-white/5 px-6 py-4 flex items-center justify-between gap-4 sticky top-0 z-10">
+        <div className="bg-dark border-b border-white/5 px-6 py-4 flex items-center justify-between gap-4 sticky top-0 z-10">
           <div className="md:hidden flex gap-1 overflow-x-auto no-scrollbar">
             {navItems.map(({ id, label }) => (
               <button key={id} onClick={() => setActiveTab(id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${activeTab === id ? 'bg-[#0D5969] text-white' : 'text-white/50 hover:text-white'}`}>
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${activeTab === id ? 'bg-primary text-white' : 'text-white/50 hover:text-white'}`}>
                 {label}
               </button>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-2">
-            <LayoutDashboard size={15} className="text-[#0D5969]" />
+            <LayoutDashboard size={15} className="text-primary" />
             <span className="text-white/60 text-sm capitalize">{activeTab}</span>
           </div>
           <div className="flex items-center gap-3 ml-auto">
             <button className="relative p-2 rounded-full hover:bg-white/5 text-white/40 hover:text-white transition-colors">
               <Bell size={17} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-[#0D5969] rounded-full" />
+              <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full" />
             </button>
             <Link to="/" className="text-xs text-white/40 hover:text-white transition-colors">View Site →</Link>
           </div>
@@ -165,12 +166,12 @@ export default function AdminDashboard() {
               {/* Stats */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {stats.map(({ label, value, change, Icon, color }) => (
-                  <div key={label} className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5">
+                  <div key={label} className="bg-dark rounded-2xl p-5 border border-white/5">
                     <div className="flex items-center justify-between mb-3">
                       <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${color}20` }}>
                         <Icon size={16} style={{ color }} />
                       </div>
-                      <span className="text-[#2ECC71] text-xs font-semibold bg-[#2ECC71]/10 px-2 py-0.5 rounded-full">{change}</span>
+                      <span className="text-success text-xs font-semibold bg-success/10 px-2 py-0.5 rounded-full">{change}</span>
                     </div>
                     <div className="text-2xl font-bold text-white">{value}</div>
                     <div className="text-xs text-white/40 mt-0.5">{label}</div>
@@ -181,7 +182,7 @@ export default function AdminDashboard() {
               {/* Charts Row */}
               <div className="grid lg:grid-cols-3 gap-5">
                 {/* Revenue Chart */}
-                <div className="lg:col-span-2 bg-[#1A1A1A] rounded-2xl p-5 border border-white/5">
+                <div className="lg:col-span-2 bg-dark rounded-2xl p-5 border border-white/5">
                   <div className="flex items-center justify-between mb-5">
                     <h3 className="font-semibold text-white text-sm">Revenue Trend</h3>
                     <span className="text-xs text-white/30">Last 7 months</span>
@@ -190,28 +191,28 @@ export default function AdminDashboard() {
                     <AreaChart data={revenueData}>
                       <defs>
                         <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#0D5969" stopOpacity={0.3} />
-                          <stop offset="95%" stopColor="#0D5969" stopOpacity={0} />
+                          <stop offset="5%" stopColor={brand.primary} stopOpacity={0.3} />
+                          <stop offset="95%" stopColor={brand.primary} stopOpacity={0} />
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                       <XAxis dataKey="month" tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.4)' }} axisLine={false} tickLine={false} />
                       <YAxis tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.4)' }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${(v/1000).toFixed(0)}k`} />
-                      <Tooltip contentStyle={{ background: '#242424', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff', fontSize: 12 }} formatter={(v) => [`$${Number(v).toLocaleString()}`, 'Revenue']} />
-                      <Area type="monotone" dataKey="revenue" stroke="#0D5969" strokeWidth={2} fill="url(#revenueGrad)" />
+                      <Tooltip contentStyle={{ background: brand.darkCard, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff', fontSize: 12 }} formatter={(v) => [`$${Number(v).toLocaleString()}`, 'Revenue']} />
+                      <Area type="monotone" dataKey="revenue" stroke={brand.primary} strokeWidth={2} fill="url(#revenueGrad)" />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
 
                 {/* Category Pie */}
-                <div className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5">
+                <div className="bg-dark rounded-2xl p-5 border border-white/5">
                   <h3 className="font-semibold text-white text-sm mb-5">Sales by Category</h3>
                   <ResponsiveContainer width="100%" height={130}>
                     <PieChart>
                       <Pie data={categoryData} cx="50%" cy="50%" innerRadius={40} outerRadius={60} paddingAngle={3} dataKey="value">
                         {categoryData.map((entry, i) => <Cell key={i} fill={entry.color} />)}
                       </Pie>
-                      <Tooltip contentStyle={{ background: '#242424', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, fontSize: 12, color: '#fff' }} formatter={(v) => [`${v}%`, '']} />
+                      <Tooltip contentStyle={{ background: brand.darkCard, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, fontSize: 12, color: '#fff' }} formatter={(v) => [`${v}%`, '']} />
                     </PieChart>
                   </ResponsiveContainer>
                   <div className="space-y-2 mt-3">
@@ -229,31 +230,31 @@ export default function AdminDashboard() {
               </div>
 
               {/* Orders Bar Chart */}
-              <div className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5">
+              <div className="bg-dark rounded-2xl p-5 border border-white/5">
                 <h3 className="font-semibold text-white text-sm mb-5">Monthly Orders</h3>
                 <ResponsiveContainer width="100%" height={180}>
                   <BarChart data={revenueData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                     <XAxis dataKey="month" tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.4)' }} axisLine={false} tickLine={false} />
                     <YAxis tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.4)' }} axisLine={false} tickLine={false} />
-                    <Tooltip contentStyle={{ background: '#242424', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff', fontSize: 12 }} />
-                    <Bar dataKey="orders" fill="#F77F00" radius={[6, 6, 0, 0]} />
+                    <Tooltip contentStyle={{ background: brand.darkCard, border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, color: '#fff', fontSize: 12 }} />
+                    <Bar dataKey="orders" fill={brand.secondary} radius={[6, 6, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
 
               {/* Recent Reservations */}
-              <div className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5">
+              <div className="bg-dark rounded-2xl p-5 border border-white/5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-white text-sm">Recent Reservations</h3>
-                  <button onClick={() => setActiveTab('reservations')} className="text-xs text-[#0D5969] hover:underline">View All</button>
+                  <button onClick={() => setActiveTab('reservations')} className="text-xs text-primary hover:underline">View All</button>
                 </div>
                 <div className="space-y-2">
                   {mockReservations.slice(0, 4).map((r) => {
                     const { color, bg } = statusConfig[r.status]
                     return (
                       <div key={r.id} className="flex items-center gap-3 py-2.5 border-b border-white/5 last:border-0">
-                        <div className="w-8 h-8 rounded-full bg-[#0D5969]/20 flex items-center justify-center text-sm font-bold text-[#0D5969]">
+                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary">
                           {r.name.charAt(0)}
                         </div>
                         <div className="flex-1">
@@ -296,12 +297,12 @@ export default function AdminDashboard() {
               <h1 className="text-xl font-bold text-white">All Reservations</h1>
               <div className="grid grid-cols-4 gap-3 mb-5">
                 {[
-                  { label: 'Total', value: mockReservations.length, color: '#0D5969' },
-                  { label: 'Confirmed', value: mockReservations.filter((r) => r.status === 'confirmed').length, color: '#2ECC71' },
-                  { label: 'Pending', value: mockReservations.filter((r) => r.status === 'pending').length, color: '#F77F00' },
-                  { label: 'Cancelled', value: mockReservations.filter((r) => r.status === 'cancelled').length, color: '#EF4444' },
+                  { label: 'Total', value: mockReservations.length, color: brand.primary },
+                  { label: 'Confirmed', value: mockReservations.filter((r) => r.status === 'confirmed').length, color: brand.success },
+                  { label: 'Pending', value: mockReservations.filter((r) => r.status === 'pending').length, color: brand.secondary },
+                  { label: 'Cancelled', value: mockReservations.filter((r) => r.status === 'cancelled').length, color: brand.danger },
                 ].map(({ label, value, color }) => (
-                  <div key={label} className="bg-[#1A1A1A] rounded-xl p-4 border border-white/5 text-center">
+                  <div key={label} className="bg-dark rounded-xl p-4 border border-white/5 text-center">
                     <div className="text-2xl font-bold" style={{ color }}>{value}</div>
                     <div className="text-xs text-white/40 mt-0.5">{label}</div>
                   </div>
@@ -312,8 +313,8 @@ export default function AdminDashboard() {
                 {mockReservations.map((r) => {
                   const { color, bg } = statusConfig[r.status]
                   return (
-                    <div key={r.id} className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/5 flex items-center gap-4 flex-wrap">
-                      <div className="w-10 h-10 rounded-full bg-[#0D5969]/20 flex items-center justify-center text-[#0D5969] font-bold text-sm flex-shrink-0">
+                    <div key={r.id} className="bg-dark rounded-2xl p-5 border border-white/5 flex items-center gap-4 flex-wrap">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">
                         {r.name.charAt(0)}
                       </div>
                       <div className="flex-1">
@@ -323,7 +324,7 @@ export default function AdminDashboard() {
                       </div>
                       <span className={`${bg} ${color} text-xs px-3 py-1 rounded-full font-medium capitalize`}>{r.status}</span>
                       <div className="flex gap-2">
-                        <button className="p-1.5 bg-[#2ECC71]/10 hover:bg-[#2ECC71]/20 text-[#2ECC71] rounded-lg transition-colors">
+                        <button className="p-1.5 bg-success/10 hover:bg-success/20 text-success rounded-lg transition-colors">
                           <CheckCircle size={14} />
                         </button>
                         <button className="p-1.5 bg-red-500/10 hover:bg-red-500/20 text-red-400 rounded-lg transition-colors">
@@ -341,7 +342,7 @@ export default function AdminDashboard() {
           {activeTab === 'users' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-5">
               <h1 className="text-xl font-bold text-white">User Management</h1>
-              <div className="bg-[#1A1A1A] rounded-2xl border border-white/5 overflow-hidden">
+              <div className="bg-dark rounded-2xl border border-white/5 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
@@ -364,7 +365,7 @@ export default function AdminDashboard() {
                               {u.avatar ? (
                                 <img src={u.avatar} alt={u.name} className="w-8 h-8 rounded-full object-cover" />
                               ) : (
-                                <div className="w-8 h-8 rounded-full bg-[#0D5969] flex items-center justify-center text-xs font-bold text-white">{u.name.charAt(0)}</div>
+                                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-white">{u.name.charAt(0)}</div>
                               )}
                               <span className="text-white text-sm font-medium">{u.name}</span>
                             </div>
@@ -372,7 +373,7 @@ export default function AdminDashboard() {
                           <td className="p-4 text-white/50 text-xs">{u.email}</td>
                           <td className="p-4 text-white/50 text-xs">{u.phone}</td>
                           <td className="p-4">
-                            <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${u.role === 'admin' ? 'bg-[#0D5969]/20 text-[#0D5969]' : 'bg-white/5 text-white/50'}`}>{u.role}</span>
+                            <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${u.role === 'admin' ? 'bg-primary/20 text-primary' : 'bg-white/5 text-white/50'}`}>{u.role}</span>
                           </td>
                           <td className="p-4 text-white/30 text-xs">{u.joined}</td>
                           <td className="p-4">
@@ -395,16 +396,16 @@ export default function AdminDashboard() {
               <h1 className="text-xl font-bold text-white">Messages</h1>
               <div className="space-y-3">
                 {mockMessages.map((msg) => (
-                  <div key={msg.id} className={`bg-[#1A1A1A] rounded-2xl p-5 border transition-colors ${msg.read ? 'border-white/5' : 'border-[#0D5969]/30'}`}>
+                  <div key={msg.id} className={`bg-dark rounded-2xl p-5 border transition-colors ${msg.read ? 'border-white/5' : 'border-primary/30'}`}>
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-[#0D5969]/20 flex items-center justify-center text-[#0D5969] font-bold text-sm flex-shrink-0">
+                        <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">
                           {msg.name.charAt(0)}
                         </div>
                         <div>
                           <p className="text-white text-sm font-medium flex items-center gap-2">
                             {msg.name}
-                            {!msg.read && <span className="w-2 h-2 bg-[#0D5969] rounded-full" />}
+                            {!msg.read && <span className="w-2 h-2 bg-primary rounded-full" />}
                           </p>
                           <p className="text-white/50 text-xs">{msg.subject}</p>
                         </div>

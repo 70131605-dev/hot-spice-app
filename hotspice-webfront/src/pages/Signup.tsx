@@ -33,11 +33,11 @@ export default function Signup() {
   }
 
   const strength = passwordStrength(password)
-  const strengthColors = ['', 'bg-red-400', 'bg-[#F77F00]', 'bg-yellow-400', 'bg-[#2ECC71]']
+  const strengthColors = ['', 'bg-red-400', 'bg-secondary', 'bg-yellow-400', 'bg-success']
   const strengthLabels = ['', 'Weak', 'Fair', 'Good', 'Strong']
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0] flex">
+    <div className="min-h-screen bg-cream flex">
       {/* Left Panel */}
       <div className="hidden lg:flex flex-1 relative overflow-hidden">
         <img
@@ -54,7 +54,7 @@ export default function Signup() {
           <div className="space-y-2.5 mt-6">
             {['Exclusive member-only offers & early access', 'Manage reservations with one click', 'Save favorite dishes and reorder instantly', 'Priority table booking for special events'].map((b) => (
               <div key={b} className="flex items-center gap-2 text-white/80 text-sm">
-                <CheckCircle size={14} className="text-[#2ECC71] flex-shrink-0" /> {b}
+                <CheckCircle size={14} className="text-success flex-shrink-0" /> {b}
               </div>
             ))}
           </div>
@@ -73,8 +73,8 @@ export default function Signup() {
             <img src="/logo.png" alt="Hot N Spice" className="h-8 w-auto object-contain" />
           </div>
 
-          <h1 className="text-3xl font-bold text-[#0D5969] mb-2">Create Account</h1>
-          <p className="text-[#8B7355] mb-7 text-sm">Join thousands of satisfied guests today.</p>
+          <h1 className="text-3xl font-bold text-primary mb-2">Create Account</h1>
+          <p className="text-muted mb-7 text-sm">Join thousands of satisfied guests today.</p>
 
           {error && (
             <div className="mb-4 flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
@@ -84,46 +84,46 @@ export default function Signup() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-[#0D5969] mb-1.5">Full Name</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Full Name</label>
               <div className="relative">
-                <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input {...register('fullName', { required: 'Full name is required' })}
                   placeholder="John Doe"
-                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.fullName ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`} />
+                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.fullName ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`} />
               </div>
               {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#0D5969] mb-1.5">Email Address</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Email Address</label>
               <div className="relative">
-                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+$/, message: 'Invalid email' } })}
                   type="email" placeholder="john@example.com"
-                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`} />
+                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`} />
               </div>
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#0D5969] mb-1.5">Phone Number</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Phone Number</label>
               <div className="relative">
-                <Phone size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <Phone size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input {...register('phone', { required: 'Phone is required' })}
                   placeholder="+1 (555) 000-0000"
-                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.phone ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`} />
+                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.phone ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`} />
               </div>
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#0D5969] mb-1.5">Password</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Password</label>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input {...register('password', { required: 'Password is required', minLength: { value: 8, message: 'Min 8 characters' } })}
                   type={showPw ? 'text' : 'password'} placeholder="••••••••"
-                  className={`w-full pl-10 pr-11 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.password ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`} />
-                <button type="button" onClick={() => setShowPw((v) => !v)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]">
+                  className={`w-full pl-10 pr-11 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.password ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`} />
+                <button type="button" onClick={() => setShowPw((v) => !v)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted">
                   {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
                 </button>
               </div>
@@ -135,46 +135,46 @@ export default function Signup() {
                       <div key={i} className={`h-1.5 flex-1 rounded-full transition-colors ${i <= strength ? strengthColors[strength] : 'bg-gray-200'}`} />
                     ))}
                   </div>
-                  <p className="text-xs text-[#8B7355] mt-1">Password strength: <span className="font-medium">{strengthLabels[strength]}</span></p>
+                  <p className="text-xs text-muted mt-1">Password strength: <span className="font-medium">{strengthLabels[strength]}</span></p>
                 </div>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#0D5969] mb-1.5">Confirm Password</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Confirm Password</label>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input {...register('confirmPassword', {
                   required: 'Please confirm your password',
                   validate: (v) => v === password || 'Passwords do not match',
                 })}
                   type="password" placeholder="••••••••"
-                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.confirmPassword ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`} />
+                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.confirmPassword ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`} />
               </div>
               {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword.message}</p>}
             </div>
 
             <div className="flex items-start gap-2.5">
-              <input {...register('agree', { required: true })} type="checkbox" id="agree" className="mt-0.5 accent-[#0D5969]" />
-              <label htmlFor="agree" className="text-xs text-[#8B7355]">
-                I agree to the <a href="#" className="text-[#0D5969] hover:underline">Terms of Service</a> and <a href="#" className="text-[#0D5969] hover:underline">Privacy Policy</a>
+              <input {...register('agree', { required: true })} type="checkbox" id="agree" className="mt-0.5 accent-primary" />
+              <label htmlFor="agree" className="text-xs text-muted">
+                I agree to the <a href="#" className="text-primary hover:underline">Terms of Service</a> and <a href="#" className="text-primary hover:underline">Privacy Policy</a>
               </label>
             </div>
             {errors.agree && <p className="text-red-500 text-xs -mt-2">Please agree to the terms</p>}
 
             <button type="submit" disabled={isSubmitting}
-              className="w-full py-3.5 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm">
+              className="w-full py-3.5 bg-primary hover:bg-primary-dark disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm">
               {isSubmitting ? 'Creating Account...' : 'Create My Account'}
             </button>
           </form>
 
           <div className="my-5 flex items-center gap-3">
             <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs text-[#8B7355]">or</span>
+            <span className="text-xs text-muted">or</span>
             <div className="flex-1 h-px bg-gray-200" />
           </div>
 
-          <button className="w-full flex items-center justify-center gap-3 py-3 border border-gray-200 hover:border-gray-300 rounded-xl text-sm font-medium text-[#0D5969] transition-colors hover:bg-gray-50">
+          <button className="w-full flex items-center justify-center gap-3 py-3 border border-gray-200 hover:border-gray-300 rounded-xl text-sm font-medium text-primary transition-colors hover:bg-gray-50">
             <svg viewBox="0 0 24 24" width="16" height="16">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -184,12 +184,12 @@ export default function Signup() {
             Sign up with Google
           </button>
 
-          <p className="mt-5 text-center text-sm text-[#8B7355]">
+          <p className="mt-5 text-center text-sm text-muted">
             Already have an account?{' '}
-            <Link to="/login" className="text-[#0D5969] font-semibold hover:underline">Sign in</Link>
+            <Link to="/login" className="text-primary font-semibold hover:underline">Sign in</Link>
           </p>
           <p className="mt-2 text-center">
-            <Link to="/" className="text-xs text-[#8B7355] hover:text-[#0D5969]">← Back to Home</Link>
+            <Link to="/" className="text-xs text-muted hover:text-primary">← Back to Home</Link>
           </p>
         </motion.div>
       </div>

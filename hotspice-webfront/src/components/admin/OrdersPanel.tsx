@@ -101,13 +101,13 @@ export default function OrdersPanel() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Order # or customer..."
-              className="bg-[#1A1A1A] border border-white/10 rounded-xl pl-9 pr-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#0D5969] w-56"
+              className="bg-dark border border-white/10 rounded-xl pl-9 pr-4 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-primary w-56"
             />
           </div>
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-[#1A1A1A] border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#0D5969]"
+            className="bg-dark border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-primary"
           >
             <option value="">All statuses</option>
             {ORDER_STATUSES.map((s) => (
@@ -122,19 +122,19 @@ export default function OrdersPanel() {
       )}
 
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-        <div className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 text-center">
+        <div className="bg-dark rounded-xl p-3 border border-white/5 text-center">
           <div className="text-lg font-bold text-white">{counts.all}</div>
           <div className="text-xs text-white/40 mt-0.5">All</div>
         </div>
         {ORDER_STATUSES.map((s) => (
-          <div key={s} className="bg-[#1A1A1A] rounded-xl p-3 border border-white/5 text-center">
+          <div key={s} className="bg-dark rounded-xl p-3 border border-white/5 text-center">
             <div className={`text-lg font-bold ${ORDER_STATUS_COLOR[s].color}`}>{counts[s] ?? 0}</div>
             <div className="text-xs text-white/40 mt-0.5">{ORDER_STATUS_LABEL[s]}</div>
           </div>
         ))}
       </div>
 
-      <div className="bg-[#1A1A1A] rounded-2xl border border-white/5 overflow-hidden">
+      <div className="bg-dark rounded-2xl border border-white/5 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -171,7 +171,7 @@ export default function OrdersPanel() {
                       <span className="text-white/50 text-xs capitalize">{o.order_type}</span>
                     </td>
                     <td className="p-4">
-                      <span className="text-[#F77F00] text-sm font-semibold">{formatPrice(Number(o.total))}</span>
+                      <span className="text-secondary text-sm font-semibold">{formatPrice(Number(o.total))}</span>
                     </td>
                     <td className="p-4 hidden md:table-cell">
                       <span className="text-white/50 text-xs">{o.rider?.name || '—'}</span>
@@ -180,7 +180,7 @@ export default function OrdersPanel() {
                       <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${color} ${bg}`}>{ORDER_STATUS_LABEL[o.status]}</span>
                     </td>
                     <td className="p-4">
-                      <button onClick={(e) => { e.stopPropagation(); setSelectedId(o.id) }} className="text-xs text-[#0D5969] hover:underline">View</button>
+                      <button onClick={(e) => { e.stopPropagation(); setSelectedId(o.id) }} className="text-xs text-primary hover:underline">View</button>
                     </td>
                   </tr>
                 )
@@ -192,8 +192,8 @@ export default function OrdersPanel() {
 
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={() => setSelectedId(null)}>
-          <div className="bg-[#1A1A1A] rounded-2xl border border-white/10 w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="p-5 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#1A1A1A]">
+          <div className="bg-dark rounded-2xl border border-white/10 w-full max-w-lg max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="p-5 border-b border-white/5 flex items-center justify-between sticky top-0 bg-dark">
               <div>
                 <h3 className="text-white font-semibold">{selected.order_number}</h3>
                 <p className="text-white/30 text-xs">{new Date(selected.created_at).toLocaleString()}</p>
@@ -237,12 +237,12 @@ export default function OrdersPanel() {
                 <div className="border-t border-white/5 mt-3 pt-3 space-y-1">
                   <div className="flex justify-between text-xs text-white/40"><span>Subtotal</span><span>{formatPrice(Number(selected.subtotal))}</span></div>
                   {Number(selected.discount_amount) > 0 && (
-                    <div className="flex justify-between text-xs text-[#2ECC71]"><span>Discount {selected.coupon_code ? `(${selected.coupon_code})` : ''}</span><span>-{formatPrice(Number(selected.discount_amount))}</span></div>
+                    <div className="flex justify-between text-xs text-success"><span>Discount {selected.coupon_code ? `(${selected.coupon_code})` : ''}</span><span>-{formatPrice(Number(selected.discount_amount))}</span></div>
                   )}
                   {selected.order_type === 'delivery' && (
                     <div className="flex justify-between text-xs text-white/40"><span>Delivery Fee</span><span>{formatPrice(Number(selected.delivery_fee))}</span></div>
                   )}
-                  <div className="flex justify-between text-sm font-semibold text-white pt-1"><span>Total</span><span className="text-[#F77F00]">{formatPrice(Number(selected.total))}</span></div>
+                  <div className="flex justify-between text-sm font-semibold text-white pt-1"><span>Total</span><span className="text-secondary">{formatPrice(Number(selected.total))}</span></div>
                 </div>
               </div>
 
@@ -252,7 +252,7 @@ export default function OrdersPanel() {
                   value={selected.status}
                   disabled={savingStatus}
                   onChange={(e) => updateStatus(selected.id, e.target.value as AdminOrderStatus)}
-                  className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969] disabled:opacity-50"
+                  className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary disabled:opacity-50"
                 >
                   {ORDER_STATUSES.map((s) => (
                     <option key={s} value={s}>{ORDER_STATUS_LABEL[s]}</option>
@@ -269,7 +269,7 @@ export default function OrdersPanel() {
                     value={selected.rider_id ?? ''}
                     disabled={savingRider}
                     onChange={(e) => assignRider(selected.id, e.target.value ? Number(e.target.value) : null)}
-                    className="w-full bg-[#111111] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0D5969] disabled:opacity-50"
+                    className="w-full bg-dark-deep border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary disabled:opacity-50"
                   >
                     <option value="">Unassigned</option>
                     {riders.filter((r) => r.is_active).map((r) => (

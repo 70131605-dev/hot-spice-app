@@ -22,7 +22,7 @@ export default function ChefTeam() {
   useEffect(() => { fetchChefs().then(setChefs) }, [])
 
   return (
-    <div className="bg-[#FFF8F0] min-h-screen">
+    <div className="bg-cream min-h-screen">
       {/* Hero */}
       <section className="relative h-64 flex items-end pb-12 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1400&h=500&fit=crop&auto=format&q=80"
@@ -30,7 +30,7 @@ export default function ChefTeam() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#F77F00] text-sm font-semibold uppercase tracking-widest">The Talent</span>
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">The Talent</span>
             <h1 className="text-5xl font-bold text-white mt-1">Our Chef Team</h1>
           </motion.div>
         </div>
@@ -38,9 +38,9 @@ export default function ChefTeam() {
 
       {/* Intro */}
       <FadeIn className="max-w-3xl mx-auto text-center px-4 py-14">
-        <span className="text-[#0D5969] text-sm font-semibold uppercase tracking-widest">Artisans of Flavor</span>
-        <h2 className="text-4xl font-bold text-[#0D5969] mt-2 mb-4">Meet the Culinary Artists</h2>
-        <p className="text-[#8B7355] leading-relaxed">
+        <span className="text-primary text-sm font-semibold uppercase tracking-widest">Artisans of Flavor</span>
+        <h2 className="text-4xl font-bold text-primary mt-2 mb-4">Meet the Culinary Artists</h2>
+        <p className="text-muted leading-relaxed">
           Each member of our kitchen has spent years mastering their craft at some of the world's finest institutions. Their stories, passions, and signature dishes define what Hot & Spice means to 50,000 guests each year.
         </p>
       </FadeIn>
@@ -69,18 +69,18 @@ export default function ChefTeam() {
                 <div className="p-5">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-bold text-[#0D5969] text-lg">{chef.name}</h3>
-                      <p className="text-[#0D5969] text-sm mt-0.5">{chef.role}</p>
+                      <h3 className="font-bold text-primary text-lg">{chef.name}</h3>
+                      <p className="text-primary text-sm mt-0.5">{chef.role}</p>
                     </div>
-                    <div className="flex items-center gap-1 bg-[#0D5969]/10 rounded-lg px-2 py-1">
-                      <Clock size={12} className="text-[#0D5969]" />
-                      <span className="text-[#0D5969] text-xs font-semibold">{chef.experience}y</span>
+                    <div className="flex items-center gap-1 bg-primary/10 rounded-lg px-2 py-1">
+                      <Clock size={12} className="text-primary" />
+                      <span className="text-primary text-xs font-semibold">{chef.experience}y</span>
                     </div>
                   </div>
-                  <p className="text-[#8B7355] text-xs mt-3 line-clamp-2 leading-relaxed">{chef.bio.split('.')[0]}.</p>
+                  <p className="text-muted text-xs mt-3 line-clamp-2 leading-relaxed">{chef.bio.split('.')[0]}.</p>
                   <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
-                    <Award size={13} className="text-[#F77F00]" />
-                    <span className="text-xs text-[#8B7355] truncate">{chef.specialty.split(',')[0]}</span>
+                    <Award size={13} className="text-secondary" />
+                    <span className="text-xs text-muted truncate">{chef.specialty.split(',')[0]}</span>
                   </div>
                 </div>
               </motion.div>
@@ -110,27 +110,27 @@ export default function ChefTeam() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent" />
                 <div className="absolute bottom-5 left-6 text-white">
                   <h2 className="text-2xl font-bold">{selected.name}</h2>
-                  <p className="text-[#F77F00] text-sm">{selected.role}</p>
+                  <p className="text-secondary text-sm">{selected.role}</p>
                 </div>
               </div>
               <div className="p-6 space-y-5">
                 <div className="flex flex-wrap gap-3">
-                  <div className="flex items-center gap-2 bg-[#0D5969]/10 rounded-lg px-3 py-1.5 text-xs font-medium text-[#0D5969]">
+                  <div className="flex items-center gap-2 bg-primary/10 rounded-lg px-3 py-1.5 text-xs font-medium text-primary">
                     <Clock size={12} /> {selected.experience} Years Experience
                   </div>
-                  <div className="flex items-center gap-2 bg-[#F77F00]/10 rounded-lg px-3 py-1.5 text-xs font-medium text-[#F77F00]">
+                  <div className="flex items-center gap-2 bg-secondary/10 rounded-lg px-3 py-1.5 text-xs font-medium text-secondary">
                     <InstagramIcon size={12} /> {selected.instagram}
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[#0D5969] mb-2">About</h4>
-                  <p className="text-[#8B7355] text-sm leading-relaxed">{selected.bio}</p>
+                  <h4 className="font-semibold text-primary mb-2">About</h4>
+                  <p className="text-muted text-sm leading-relaxed">{selected.bio}</p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[#0D5969] mb-2">Specialty</h4>
-                  <p className="text-[#8B7355] text-sm">{selected.specialty}</p>
+                  <h4 className="font-semibold text-primary mb-2">Specialty</h4>
+                  <p className="text-muted text-sm">{selected.specialty}</p>
                 </div>
-                <div className="bg-gradient-to-r from-[#0D5969] to-[#F77F00] rounded-2xl p-4">
+                <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-4">
                   <p className="text-white/80 text-xs uppercase tracking-widest mb-1">Signature Dish</p>
                   <p className="text-white font-semibold">{selected.signature}</p>
                 </div>

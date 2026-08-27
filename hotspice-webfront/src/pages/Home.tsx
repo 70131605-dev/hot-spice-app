@@ -119,9 +119,9 @@ export default function Home() {
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
-          className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-[#1A1A1A] text-white px-6 py-3 rounded-full shadow-xl flex items-center gap-2 text-sm font-medium"
+          className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-dark text-white px-6 py-3 rounded-full shadow-xl flex items-center gap-2 text-sm font-medium"
         >
-          <CheckCircle size={16} className="text-[#2ECC71]" />
+          <CheckCircle size={16} className="text-success" />
           {toastMsg}
         </motion.div>
       )}
@@ -145,10 +145,10 @@ export default function Home() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-[#0D5969]/20 border border-[#0D5969]/40 backdrop-blur-sm rounded-full px-5 py-2 mb-8"
+            className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 backdrop-blur-sm rounded-full px-5 py-2 mb-8"
           >
-            <Flame size={14} className="text-[#F77F00]" />
-            <span className="text-[#F77F00] text-sm font-medium">Award-Winning Restaurant Since 2003</span>
+            <Flame size={14} className="text-secondary" />
+            <span className="text-secondary text-sm font-medium">Award-Winning Restaurant Since 2003</span>
           </motion.div>
 
           <motion.h1
@@ -159,7 +159,7 @@ export default function Home() {
           >
             Delicious Food,{' '}
             <span className="relative">
-              <span className="text-[#0D5969]">Great</span>
+              <span className="text-primary">Great</span>
             </span>{' '}
             Experience
           </motion.h1>
@@ -181,13 +181,13 @@ export default function Home() {
           >
             <Link
               to="/reservation"
-              className="w-full sm:w-auto sm:min-w-[210px] px-8 py-4 bg-[#0D5969] hover:bg-[#093E4A] text-white font-semibold rounded-full transition-all duration-200 shadow-lg shadow-[#0D5969]/40 hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto sm:min-w-[210px] px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full transition-all duration-200 shadow-lg shadow-primary/40 hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               <Phone size={16} /> Book A Table
             </Link>
             <Link
               to="/menu"
-              className="w-full sm:w-auto sm:min-w-[210px] px-8 py-4 bg-[#0D5969]/20 hover:bg-[#0D5969] border-2 border-[#0D5969]/70 hover:border-[#0D5969] text-white font-semibold rounded-full transition-all duration-200 backdrop-blur-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto sm:min-w-[210px] px-8 py-4 bg-primary/20 hover:bg-primary border-2 border-primary/70 hover:border-primary text-white font-semibold rounded-full transition-all duration-200 backdrop-blur-sm flex items-center justify-center gap-2"
             >
               <Utensils size={16} /> Explore Menu
             </Link>
@@ -225,12 +225,12 @@ export default function Home() {
       </section>
 
       {/* ═══ FEATURED DISHES ═══ */}
-      <section className="section-padding bg-[#FFF8F0]">
+      <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-12">
-            <span className="text-[#0D5969] text-sm font-semibold uppercase tracking-widest">Handpicked Favorites</span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#0D5969] mt-2 mb-4">Our Popular Dishes</h2>
-            <p className="text-[#8B7355] max-w-xl mx-auto">Each dish is a masterpiece — crafted with passion, plated with precision, and served with pride.</p>
+            <span className="text-primary text-sm font-semibold uppercase tracking-widest">Handpicked Favorites</span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-primary mt-2 mb-4">Our Popular Dishes</h2>
+            <p className="text-muted max-w-xl mx-auto">Each dish is a masterpiece — crafted with passion, plated with precision, and served with pride.</p>
           </FadeIn>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -244,7 +244,7 @@ export default function Home() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     {item.isSpecial && (
-                      <div className="absolute top-3 left-3 bg-[#0D5969] text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                      <div className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
                         <Flame size={10} /> Special
                       </div>
                     )}
@@ -260,17 +260,17 @@ export default function Home() {
                         <Star
                           key={idx}
                           size={13}
-                          className={idx < Math.floor(item.rating) ? 'text-[#F77F00] fill-[#F77F00]' : 'text-gray-200 fill-gray-200'}
+                          className={idx < Math.floor(item.rating) ? 'text-secondary fill-secondary' : 'text-gray-200 fill-gray-200'}
                         />
                       ))}
-                      <span className="text-xs text-[#8B7355] ml-1">({item.ratingCount})</span>
+                      <span className="text-xs text-muted ml-1">({item.ratingCount})</span>
                     </div>
-                    <h3 className="font-semibold text-[#0D5969] text-lg mb-1">{item.name}</h3>
-                    <p className="text-[#8B7355] text-sm line-clamp-2 mb-4">{item.description}</p>
+                    <h3 className="font-semibold text-primary text-lg mb-1">{item.name}</h3>
+                    <p className="text-muted text-sm line-clamp-2 mb-4">{item.description}</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-2xl font-bold text-[#0D5969]">{formatPrice(item.price)}</span>
-                        <div className="flex items-center gap-3 mt-0.5 text-xs text-[#8B7355]">
+                        <span className="text-2xl font-bold text-primary">{formatPrice(item.price)}</span>
+                        <div className="flex items-center gap-3 mt-0.5 text-xs text-muted">
                           <span className="flex items-center gap-1"><Clock size={11} /> {item.prepTime}m</span>
                           <span className="flex items-center gap-1"><Flame size={11} /> {item.calories} cal</span>
                         </div>
@@ -278,7 +278,7 @@ export default function Home() {
                       <button
                         onClick={() => handleAddToCart(item)}
                         disabled={!item.isAvailable}
-                        className="px-4 py-2.5 bg-[#0D5969] hover:bg-[#093E4A] disabled:bg-gray-200 text-white text-sm font-semibold rounded-xl transition-colors"
+                        className="px-4 py-2.5 bg-primary hover:bg-primary-dark disabled:bg-gray-200 text-white text-sm font-semibold rounded-xl transition-colors"
                       >
                         Add to Cart
                       </button>
@@ -292,7 +292,7 @@ export default function Home() {
           <FadeIn className="text-center mt-10">
             <Link
               to="/menu"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-[#0D5969] text-[#0D5969] hover:bg-[#0D5969] hover:text-white font-semibold rounded-full transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-full transition-all duration-200"
             >
               View Full Menu <ArrowRight size={16} />
             </Link>
@@ -302,10 +302,10 @@ export default function Home() {
 
       {/* ═══ TODAY'S SPECIAL ═══ */}
       {todaySpecial && (
-      <section className="section-padding bg-[#1A1A1A] relative overflow-hidden">
+      <section className="section-padding bg-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#0D5969] blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-[#F77F00] blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-secondary blur-3xl" />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -316,7 +316,7 @@ export default function Home() {
                   alt={todaySpecial.name}
                   className="w-full max-w-lg mx-auto rounded-3xl shadow-2xl animate-float"
                 />
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#0D5969] rounded-full flex flex-col items-center justify-center shadow-lg">
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary rounded-full flex flex-col items-center justify-center shadow-lg">
                   <span className="text-white text-xs font-bold">TODAY'S</span>
                   <span className="text-white text-xs font-bold">SPECIAL</span>
                 </div>
@@ -324,19 +324,19 @@ export default function Home() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="text-white space-y-5 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 bg-[#0D5969]/20 border border-[#0D5969]/40 rounded-full px-4 py-1.5">
-                  <Flame size={12} className="text-[#F77F00]" />
-                  <span className="text-[#F77F00] text-xs font-semibold">Chef's Recommendation</span>
+                <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 rounded-full px-4 py-1.5">
+                  <Flame size={12} className="text-secondary" />
+                  <span className="text-secondary text-xs font-semibold">Chef's Recommendation</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-bold leading-tight">{todaySpecial.name}</h2>
                 <p className="text-white/60 text-base leading-relaxed">{todaySpecial.description}</p>
                 <div className="flex items-center justify-center lg:justify-start gap-6">
                   <div>
-                    <span className="text-3xl font-bold text-[#0D5969]">{formatPrice(todaySpecial.price)}</span>
+                    <span className="text-3xl font-bold text-primary">{formatPrice(todaySpecial.price)}</span>
                   </div>
                   <div className="flex items-center gap-1">
                     {Array.from({ length: 5 }, (_, i) => (
-                      <Star key={i} size={14} className="text-[#F77F00] fill-[#F77F00]" />
+                      <Star key={i} size={14} className="text-secondary fill-secondary" />
                     ))}
                     <span className="text-white/50 text-sm ml-1">({todaySpecial.ratingCount} reviews)</span>
                   </div>
@@ -352,7 +352,7 @@ export default function Home() {
                 <div className="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
                   <button
                     onClick={() => handleAddToCart(todaySpecial)}
-                    className="px-8 py-3.5 bg-[#0D5969] hover:bg-[#093E4A] text-white font-semibold rounded-full transition-all hover:-translate-y-0.5"
+                    className="px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full transition-all hover:-translate-y-0.5"
                   >
                     Order Now
                   </button>
@@ -368,22 +368,22 @@ export default function Home() {
       )}
 
       {/* ═══ WHY CHOOSE US ═══ */}
-      <section className="section-padding bg-[#FFF8F0]">
+      <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-14">
-            <span className="text-[#0D5969] text-sm font-semibold uppercase tracking-widest">Our Promise</span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#0D5969] mt-2 mb-4">Why Choose Hot & Spice?</h2>
-            <p className="text-[#8B7355] max-w-xl mx-auto">More than a meal — an experience engineered to exceed every expectation.</p>
+            <span className="text-primary text-sm font-semibold uppercase tracking-widest">Our Promise</span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-primary mt-2 mb-4">Why Choose Hot & Spice?</h2>
+            <p className="text-muted max-w-xl mx-auto">More than a meal — an experience engineered to exceed every expectation.</p>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUs.map(({ Icon, title, desc }, i) => (
               <FadeIn key={title} delay={i * 0.1}>
                 <div className="bg-white rounded-2xl p-7 shadow-warm hover-lift group text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-[#0D5969]/10 group-hover:bg-[#0D5969] flex items-center justify-center mx-auto mb-5 transition-colors duration-300">
-                    <Icon size={26} className="text-[#0D5969] group-hover:text-white transition-colors duration-300" />
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary flex items-center justify-center mx-auto mb-5 transition-colors duration-300">
+                    <Icon size={26} className="text-primary group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="font-bold text-[#0D5969] text-lg mb-2">{title}</h3>
-                  <p className="text-[#8B7355] text-sm leading-relaxed">{desc}</p>
+                  <h3 className="font-bold text-primary text-lg mb-2">{title}</h3>
+                  <p className="text-muted text-sm leading-relaxed">{desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -392,7 +392,7 @@ export default function Home() {
       </section>
 
       {/* ═══ STATISTICS ═══ */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-[#0D5969] via-[#0A4A56] to-[#062F38]">
+      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-primary-darkest">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_white_0%,transparent_70%)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
@@ -405,12 +405,12 @@ export default function Home() {
       </section>
 
       {/* ═══ CHEF PREVIEW ═══ */}
-      <section className="section-padding bg-[#FFF8F0]">
+      <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-12">
-            <span className="text-[#0D5969] text-sm font-semibold uppercase tracking-widest">The Talent</span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#0D5969] mt-2 mb-4">Meet Our Amazing Chefs</h2>
-            <p className="text-[#8B7355] max-w-xl mx-auto">Internationally trained artisans who bring passion, precision, and soul to every plate.</p>
+            <span className="text-primary text-sm font-semibold uppercase tracking-widest">The Talent</span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-primary mt-2 mb-4">Meet Our Amazing Chefs</h2>
+            <p className="text-muted max-w-xl mx-auto">Internationally trained artisans who bring passion, precision, and soul to every plate.</p>
           </FadeIn>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {chefs.map((chef, i) => (
@@ -428,8 +428,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <h3 className="font-bold text-[#0D5969] text-base">{chef.name}</h3>
-                  <p className="text-[#0D5969] text-sm">{chef.role}</p>
+                  <h3 className="font-bold text-primary text-base">{chef.name}</h3>
+                  <p className="text-primary text-sm">{chef.role}</p>
                 </div>
               </FadeIn>
             ))}
@@ -437,7 +437,7 @@ export default function Home() {
           <FadeIn className="text-center mt-10">
             <Link
               to="/chefs"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-[#0D5969] text-[#0D5969] hover:bg-[#0D5969] hover:text-white font-semibold rounded-full transition-all duration-200"
+              className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-full transition-all duration-200"
             >
               Meet The Team <ArrowRight size={16} />
             </Link>
@@ -447,11 +447,11 @@ export default function Home() {
 
       {/* ═══ TESTIMONIALS ═══ */}
       {testimonials.length > 0 && (
-      <section className="section-padding bg-[#1A1A1A] relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#0D5969]/10 rounded-full blur-3xl" />
+      <section className="section-padding bg-dark relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <FadeIn className="text-center mb-12">
-            <span className="text-[#F77F00] text-sm font-semibold uppercase tracking-widest">Guest Reviews</span>
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Guest Reviews</span>
             <h2 className="text-4xl lg:text-5xl font-bold text-white mt-2 mb-4">What Our Customers Say</h2>
           </FadeIn>
 
@@ -465,7 +465,7 @@ export default function Home() {
                 transition={{ duration: 0.4 }}
                 className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12"
               >
-                <Quote className="text-[#0D5969] mb-6" size={36} />
+                <Quote className="text-primary mb-6" size={36} />
                 <p className="text-white/80 text-lg leading-relaxed mb-8 italic">
                   "{testimonials[testimonialIdx].comment}"
                 </p>
@@ -473,19 +473,19 @@ export default function Home() {
                   <img
                     src={testimonials[testimonialIdx].avatar}
                     alt={testimonials[testimonialIdx].name}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-[#0D5969]"
+                    className="w-14 h-14 rounded-full object-cover border-2 border-primary"
                   />
                   <div>
                     <h4 className="font-semibold text-white text-base">{testimonials[testimonialIdx].name}</h4>
-                    <p className="text-[#8B7355] text-sm">{testimonials[testimonialIdx].role}</p>
+                    <p className="text-muted text-sm">{testimonials[testimonialIdx].role}</p>
                     <div className="flex items-center gap-1 mt-1">
                       {Array.from({ length: 5 }, (_, i) => (
-                        <Star key={i} size={13} className="text-[#F77F00] fill-[#F77F00]" />
+                        <Star key={i} size={13} className="text-secondary fill-secondary" />
                       ))}
                     </div>
                   </div>
                   <div className="ml-auto text-right">
-                    <span className="text-[#0D5969] text-sm font-medium">{testimonials[testimonialIdx].dish}</span>
+                    <span className="text-primary text-sm font-medium">{testimonials[testimonialIdx].dish}</span>
                   </div>
                 </div>
               </motion.div>
@@ -494,7 +494,7 @@ export default function Home() {
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={() => setTestimonialIdx((i) => (i - 1 + testimonials.length) % testimonials.length)}
-                className="w-11 h-11 rounded-full border border-white/20 hover:border-[#0D5969] hover:bg-[#0D5969] text-white flex items-center justify-center transition-all"
+                className="w-11 h-11 rounded-full border border-white/20 hover:border-primary hover:bg-primary text-white flex items-center justify-center transition-all"
               >
                 <ChevronLeft size={18} />
               </button>
@@ -503,13 +503,13 @@ export default function Home() {
                   <button
                     key={i}
                     onClick={() => setTestimonialIdx(i)}
-                    className={`h-2 rounded-full transition-all ${i === testimonialIdx ? 'w-8 bg-[#0D5969]' : 'w-2 bg-white/20'}`}
+                    className={`h-2 rounded-full transition-all ${i === testimonialIdx ? 'w-8 bg-primary' : 'w-2 bg-white/20'}`}
                   />
                 ))}
               </div>
               <button
                 onClick={() => setTestimonialIdx((i) => (i + 1) % testimonials.length)}
-                className="w-11 h-11 rounded-full border border-white/20 hover:border-[#0D5969] hover:bg-[#0D5969] text-white flex items-center justify-center transition-all"
+                className="w-11 h-11 rounded-full border border-white/20 hover:border-primary hover:bg-primary text-white flex items-center justify-center transition-all"
               >
                 <ChevronRight size={18} />
               </button>
@@ -520,7 +520,7 @@ export default function Home() {
       )}
 
       {/* ═══ RESERVATION CTA ═══ */}
-      <section className="section-padding bg-[#FFF8F0]">
+      <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative rounded-3xl overflow-hidden">
             <img
@@ -532,7 +532,7 @@ export default function Home() {
             <div className="relative z-10 grid lg:grid-cols-2 gap-8 p-8 lg:p-14">
               <FadeIn>
                 <div className="text-white space-y-4">
-                  <span className="text-[#F77F00] text-sm font-semibold uppercase tracking-widest">Reserve Your Experience</span>
+                  <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Reserve Your Experience</span>
                   <h2 className="text-4xl lg:text-5xl font-bold">Book Your Table Today</h2>
                   <p className="text-white/60 text-base leading-relaxed max-w-md">
                     Secure your seat at New York's most celebrated dining destination. Special occasions made extraordinary — intimate booths, private dining rooms, and chef's table experiences available.
@@ -559,7 +559,7 @@ export default function Home() {
                       <input
                         {...register('name', { required: true })}
                         placeholder="John Doe"
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D5969]"
+                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-primary"
                       />
                     </div>
                     <div>
@@ -567,7 +567,7 @@ export default function Home() {
                       <input
                         {...register('phone', { required: true })}
                         placeholder="+1 555-0100"
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D5969]"
+                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-primary"
                       />
                     </div>
                   </div>
@@ -577,7 +577,7 @@ export default function Home() {
                       {...register('email', { required: true })}
                       type="email"
                       placeholder="john@example.com"
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#0D5969]"
+                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2.5 text-white placeholder-white/30 text-sm focus:outline-none focus:border-primary"
                     />
                   </div>
                   <div className="grid grid-cols-3 gap-3">
@@ -587,14 +587,14 @@ export default function Home() {
                         {...register('date', { required: true })}
                         type="date"
                         min={new Date().toISOString().split('T')[0]}
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#0D5969] [color-scheme:dark]"
+                        className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-primary [color-scheme:dark]"
                       />
                     </div>
                     <div>
                       <label className="text-white/70 text-xs font-medium mb-1.5 block">Time</label>
                       <select
                         {...register('time', { required: true })}
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#0D5969] [color-scheme:dark]"
+                        className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-primary [color-scheme:dark]"
                       >
                         <option value="">Select</option>
                         {['6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM'].map((t) => (
@@ -606,7 +606,7 @@ export default function Home() {
                       <label className="text-white/70 text-xs font-medium mb-1.5 block">Guests</label>
                       <select
                         {...register('guests', { required: true })}
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-[#0D5969] [color-scheme:dark]"
+                        className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-primary [color-scheme:dark]"
                       >
                         {[1,2,3,4,5,6,7,8].map((n) => (
                           <option key={n} value={n}>{n} {n === 1 ? 'Guest' : 'Guests'}</option>
@@ -617,7 +617,7 @@ export default function Home() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm"
+                    className="w-full py-3.5 bg-primary hover:bg-primary-dark disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm"
                   >
                     {isSubmitting ? 'Reserving...' : 'Reserve My Table'}
                   </button>
@@ -629,12 +629,12 @@ export default function Home() {
       </section>
 
       {/* ═══ INSTAGRAM GALLERY ═══ */}
-      <section className="section-padding bg-[#FFF8F0]">
+      <section className="section-padding bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn className="text-center mb-10">
-            <span className="text-[#0D5969] text-sm font-semibold uppercase tracking-widest">@HotAndSpice</span>
-            <h2 className="text-4xl font-bold text-[#0D5969] mt-2 mb-2">Follow Our Journey</h2>
-            <p className="text-[#8B7355]">Tag us in your dining photos for a chance to be featured.</p>
+            <span className="text-primary text-sm font-semibold uppercase tracking-widest">@HotAndSpice</span>
+            <h2 className="text-4xl font-bold text-primary mt-2 mb-2">Follow Our Journey</h2>
+            <p className="text-muted">Tag us in your dining photos for a chance to be featured.</p>
           </FadeIn>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {galleryImages.map((src, i) => (
@@ -653,7 +653,7 @@ export default function Home() {
       </section>
 
       {/* ═══ NEWSLETTER ═══ */}
-      <section className="py-16 bg-gradient-to-r from-[#0D5969] to-[#F77F00]">
+      <section className="py-16 bg-gradient-to-r from-primary to-secondary">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <FadeIn>
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3">Get Exclusive Offers & Updates</h2>
@@ -666,7 +666,7 @@ export default function Home() {
               />
               <button
                 type="submit"
-                className="px-8 py-3.5 bg-white text-[#0D5969] font-semibold rounded-full hover:shadow-lg transition-all hover:-translate-y-0.5 text-sm whitespace-nowrap"
+                className="px-8 py-3.5 bg-white text-primary font-semibold rounded-full hover:shadow-lg transition-all hover:-translate-y-0.5 text-sm whitespace-nowrap"
               >
                 Subscribe Now
               </button>
@@ -685,8 +685,8 @@ export default function Home() {
           referrerPolicy="no-referrer-when-downgrade"
           title="Hot & Spice Location"
         />
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg flex items-center gap-2">
-          <MapPin size={14} className="text-[#0D5969]" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-dark text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg flex items-center gap-2">
+          <MapPin size={14} className="text-primary" />
           Lahore, Pakistan
         </div>
       </section>

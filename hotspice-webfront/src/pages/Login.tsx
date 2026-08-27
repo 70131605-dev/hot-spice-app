@@ -25,7 +25,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFF8F0] flex ">
+    <div className="min-h-screen bg-cream flex ">
       {/* Left Panel */}
       <div className="hidden lg:flex flex-1 relative overflow-hidden">
         <img
@@ -56,11 +56,11 @@ export default function Login() {
             <img src="/logo.png" alt="Hot N Spice" className="h-8 w-auto object-contain" />
           </div>
 
-          <h1 className="text-3xl font-bold text-[#0D5969] mb-2">Sign In</h1>
-          <p className="text-[#8B7355] mb-8 text-sm">Welcome back! Please enter your credentials.</p>
+          <h1 className="text-3xl font-bold text-primary mb-2">Sign In</h1>
+          <p className="text-muted mb-8 text-sm">Welcome back! Please enter your credentials.</p>
 
           {/* Demo Hint */}
-          <div className="mb-6 p-3 bg-[#F77F00]/10 border border-[#F77F00]/30 rounded-xl text-xs text-[#8B7355]">
+          <div className="mb-6 p-3 bg-secondary/10 border border-secondary/30 rounded-xl text-xs text-muted">
             <strong>Demo:</strong> admin@hotandspice.pk / HotSpice#2026Admin <br/>
             Or: john@example.com / anypassword6+
           </div>
@@ -73,14 +73,14 @@ export default function Login() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-[#0D5969] mb-1.5">Email Address</label>
+              <label className="block text-sm font-medium text-primary mb-1.5">Email Address</label>
               <div className="relative">
-                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input
                   {...register('email', { required: 'Email is required' })}
                   type="email"
                   placeholder="john@example.com"
-                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`}
+                  className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.email ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`}
                 />
               </div>
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -88,18 +88,18 @@ export default function Login() {
 
             <div>
               <div className="flex justify-between mb-1.5">
-                <label className="text-sm font-medium text-[#0D5969]">Password</label>
-                <a href="#" className="text-xs text-[#0D5969] hover:underline">Forgot password?</a>
+                <label className="text-sm font-medium text-primary">Password</label>
+                <a href="#" className="text-xs text-primary hover:underline">Forgot password?</a>
               </div>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
                 <input
                   {...register('password', { required: 'Password is required', minLength: { value: 6, message: 'Min 6 characters' } })}
                   type={showPw ? 'text' : 'password'}
                   placeholder="••••••••"
-                  className={`w-full pl-10 pr-11 py-3 border rounded-xl text-sm text-[#0D5969] focus:outline-none transition-colors ${errors.password ? 'border-red-400' : 'border-gray-200 focus:border-[#0D5969]'}`}
+                  className={`w-full pl-10 pr-11 py-3 border rounded-xl text-sm text-primary focus:outline-none transition-colors ${errors.password ? 'border-red-400' : 'border-gray-200 focus:border-primary'}`}
                 />
-                <button type="button" onClick={() => setShowPw((v) => !v)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8B7355] hover:text-[#0D5969]">
+                <button type="button" onClick={() => setShowPw((v) => !v)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted hover:text-primary">
                   {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
                 </button>
               </div>
@@ -109,7 +109,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 bg-[#0D5969] hover:bg-[#093E4A] disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm"
+              className="w-full py-3.5 bg-primary hover:bg-primary-dark disabled:opacity-70 text-white font-semibold rounded-xl transition-colors text-sm"
             >
               {isSubmitting ? 'Signing In...' : 'Sign In'}
             </button>
@@ -117,11 +117,11 @@ export default function Login() {
 
           <div className="my-6 flex items-center gap-3">
             <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs text-[#8B7355]">or continue with</span>
+            <span className="text-xs text-muted">or continue with</span>
             <div className="flex-1 h-px bg-gray-200" />
           </div>
 
-          <button className="w-full flex items-center justify-center gap-3 py-3 border border-gray-200 hover:border-gray-300 rounded-xl text-sm font-medium text-[#0D5969] transition-colors hover:bg-gray-50">
+          <button className="w-full flex items-center justify-center gap-3 py-3 border border-gray-200 hover:border-gray-300 rounded-xl text-sm font-medium text-primary transition-colors hover:bg-gray-50">
             <svg viewBox="0 0 24 24" width="16" height="16">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -131,13 +131,13 @@ export default function Login() {
             Continue with Google
           </button>
 
-          <p className="mt-6 text-center text-sm text-[#8B7355]">
+          <p className="mt-6 text-center text-sm text-muted">
             Don't have an account?{' '}
-            <Link to="/signup" className="text-[#0D5969] font-semibold hover:underline">Sign up free</Link>
+            <Link to="/signup" className="text-primary font-semibold hover:underline">Sign up free</Link>
           </p>
 
           <p className="mt-3 text-center">
-            <Link to="/" className="text-xs text-[#8B7355] hover:text-[#0D5969]">← Back to Home</Link>
+            <Link to="/" className="text-xs text-muted hover:text-primary">← Back to Home</Link>
           </p>
         </motion.div>
       </div>

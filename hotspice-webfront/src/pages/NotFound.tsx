@@ -4,14 +4,14 @@ import { Home, ArrowLeft, Utensils } from 'lucide-react'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#FFF8F0] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-cream flex items-center justify-center px-4">
       <div className="text-center max-w-xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 200, damping: 15 }}
           className="text-[180px] leading-none font-black select-none mb-4"
-          style={{ background: 'linear-gradient(135deg, #0D5969, #F77F00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+          style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
         >
           404
         </motion.div>
@@ -22,23 +22,23 @@ export default function NotFound() {
           transition={{ delay: 0.2 }}
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Utensils size={20} className="text-[#0D5969]" />
-            <span className="text-[#0D5969] font-semibold uppercase tracking-widest text-sm">Hot & Spice</span>
+            <Utensils size={20} className="text-primary" />
+            <span className="text-primary font-semibold uppercase tracking-widest text-sm">Hot & Spice</span>
           </div>
-          <h1 className="text-4xl font-bold text-[#0D5969] mb-3">Page Not Found</h1>
-          <p className="text-[#8B7355] mb-8 leading-relaxed">
+          <h1 className="text-4xl font-bold text-primary mb-3">Page Not Found</h1>
+          <p className="text-muted mb-8 leading-relaxed">
             It seems this page wandered off the menu. The dish you're looking for may have been moved, renamed, or is simply unavailable today.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/"
-              className="flex items-center gap-2 px-7 py-3.5 bg-[#0D5969] hover:bg-[#093E4A] text-white font-semibold rounded-full transition-all hover:-translate-y-0.5"
+              className="flex items-center gap-2 px-7 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full transition-all hover:-translate-y-0.5"
             >
               <Home size={16} /> Back to Home
             </Link>
             <Link
               to="/menu"
-              className="flex items-center gap-2 px-7 py-3.5 border-2 border-[#0D5969] text-[#0D5969] hover:bg-[#0D5969] hover:text-white font-semibold rounded-full transition-all"
+              className="flex items-center gap-2 px-7 py-3.5 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-full transition-all"
             >
               <Utensils size={16} /> Browse Menu
             </Link>

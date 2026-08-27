@@ -58,11 +58,11 @@ export const ORDER_STATUS_LABEL: Record<AdminOrderStatus, string> = {
 }
 
 export const ORDER_STATUS_COLOR: Record<AdminOrderStatus, { color: string; bg: string }> = {
-  pending: { color: 'text-[#F77F00]', bg: 'bg-[#F77F00]/10' },
-  confirmed: { color: 'text-[#3498DB]', bg: 'bg-[#3498DB]/10' },
-  preparing: { color: 'text-[#3498DB]', bg: 'bg-[#3498DB]/10' },
-  out_for_delivery: { color: 'text-[#0D5969]', bg: 'bg-[#0D5969]/10' },
-  delivered: { color: 'text-[#2ECC71]', bg: 'bg-[#2ECC71]/10' },
+  pending: { color: 'text-secondary', bg: 'bg-secondary/10' },
+  confirmed: { color: 'text-accent', bg: 'bg-accent/10' },
+  preparing: { color: 'text-accent', bg: 'bg-accent/10' },
+  out_for_delivery: { color: 'text-primary', bg: 'bg-primary/10' },
+  delivered: { color: 'text-success', bg: 'bg-success/10' },
   cancelled: { color: 'text-red-400', bg: 'bg-red-500/10' },
 }
 

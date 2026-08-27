@@ -2,21 +2,40 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #0D5969;
+  /* ---------------------------------------------------------------
+     Hot N Spicy brand palette (moodboard: deep teal + bright orange
+     on warm beige, with wood-brown neutrals).
+     Change colours HERE ONLY - every component uses these tokens.
+     --------------------------------------------------------------- */
+
+  /* Brand */
+  --color-primary: #0D5969;        /* deep teal - headings, nav, body text */
   --color-primary-dark: #093E4A;
-  --color-primary-light: #4A8A98;
-  --color-secondary: #F77F00;
-  --color-secondary-dark: #E06E00;
-  --color-bg: #FFF8F0;
-  --color-fg: #0D5969;
-  --color-success: #2ECC71;
+  --color-primary-darkest: #062F38;
+  --color-primary-light: #2596BE;  /* light teal - links, charts, info */
+  --color-accent: #2596BE;
+
+  --color-secondary: #FF3D00;      /* moodboard orange - CTAs, prices */
+  --color-secondary-dark: #D63200;
+
+  /* Warm neutrals */
+  --color-cream: #F5EFE6;          /* page background (beige) */
+  --color-cream-dark: #EFE5D8;
+  --color-muted: #8B5E3C;          /* wood brown - secondary text */
+  --color-muted-light: #C4A882;
+
+  /* Dark surfaces */
   --color-dark: #1A1A1A;
+  --color-dark-deep: #111111;
   --color-dark-card: #242424;
   --color-dark-surface: #2E2E2E;
-  --color-muted: #8B7355;
-  --color-muted-light: #C4A882;
-  --color-cream: #FFF8F0;
-  --color-cream-dark: #F5EDE0;
+
+  /* Status */
+  --color-success: #2ECC71;
+  --color-danger: #EF4444;
+
+  --color-bg: var(--color-cream);
+  --color-fg: var(--color-primary);
 
   --font-sans: 'Poppins', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -34,8 +53,8 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #FFF8F0;
-  color: #0D5969;
+  background-color: var(--color-cream);
+  color: var(--color-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -45,14 +64,14 @@ body {
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF8F0;
+  background: var(--color-cream);
 }
 ::-webkit-scrollbar-thumb {
-  background: #0D5969;
+  background: var(--color-primary);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #093E4A;
+  background: var(--color-primary-dark);
 }
 
 .glass {
@@ -70,14 +89,14 @@ body {
 }
 
 .glass-cream {
-  background: rgba(255, 248, 240, 0.85);
+  background: rgba(245, 239, 230, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(13, 89, 105, 0.12);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #0D5969, #F77F00);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -120,14 +139,14 @@ body {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #0D5969, transparent);
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: #0D5969;
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(13, 89, 105, 0.1);
 }
 

@@ -25,14 +25,14 @@ export default function CartDrawer({ open, onClose }: Props) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-[#1A1A1A] z-50 flex flex-col shadow-2xl"
+            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-dark z-50 flex flex-col shadow-2xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <ShoppingBag className="text-[#0D5969]" size={22} />
+                <ShoppingBag className="text-primary" size={22} />
                 <h2 className="text-white font-semibold text-lg">Your Order</h2>
-                <span className="bg-[#0D5969] text-white text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
+                <span className="bg-primary text-white text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
               </div>
               <button onClick={onClose} className="p-2 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-colors">
                 <X size={20} />
@@ -50,7 +50,7 @@ export default function CartDrawer({ open, onClose }: Props) {
                   <Link
                     to="/menu"
                     onClick={onClose}
-                    className="px-6 py-2.5 bg-[#0D5969] text-white text-sm font-semibold rounded-full hover:bg-[#093E4A] transition-colors"
+                    className="px-6 py-2.5 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary-dark transition-colors"
                   >
                     Browse Menu
                   </Link>
@@ -68,19 +68,19 @@ export default function CartDrawer({ open, onClose }: Props) {
                     <img src={item.image} alt={item.name} className="w-16 h-16 rounded-lg object-cover flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-sm font-medium truncate">{item.name}</p>
-                      <p className="text-[#F77F00] text-sm font-semibold">{formatPrice(item.price)}</p>
+                      <p className="text-secondary text-sm font-semibold">{formatPrice(item.price)}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => decrement(item.id)}
-                        className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#0D5969] text-white flex items-center justify-center transition-colors"
+                        className="w-7 h-7 rounded-full bg-white/10 hover:bg-primary text-white flex items-center justify-center transition-colors"
                       >
                         <Minus size={12} />
                       </button>
                       <span className="text-white font-semibold text-sm w-6 text-center">{item.qty}</span>
                       <button
                         onClick={() => increment(item.id)}
-                        className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#0D5969] text-white flex items-center justify-center transition-colors"
+                        className="w-7 h-7 rounded-full bg-white/10 hover:bg-primary text-white flex items-center justify-center transition-colors"
                       >
                         <Plus size={12} />
                       </button>
@@ -109,9 +109,9 @@ export default function CartDrawer({ open, onClose }: Props) {
                 </div>
                 <div className="flex justify-between text-base text-white font-semibold pt-2 border-t border-white/10">
                   <span>Total</span>
-                  <span className="text-[#F77F00]">{formatPrice(totalPrice * 1.08)}</span>
+                  <span className="text-secondary">{formatPrice(totalPrice * 1.08)}</span>
                 </div>
-                <Link to="/checkout" onClick={onClose} className="w-full inline-block text-center py-3.5 bg-[#0D5969] hover:bg-[#093E4A] text-white font-semibold rounded-xl transition-colors shadow-lg">
+                <Link to="/checkout" onClick={onClose} className="w-full inline-block text-center py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl transition-colors shadow-lg">
                   Proceed to Checkout
                 </Link>
                 <button

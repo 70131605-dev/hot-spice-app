@@ -42,7 +42,7 @@ export default function Gallery() {
   const nextItem = () => setLightboxIdx((i) => (i === null) ? 0 : (i + 1) % filtered.length)
 
   return (
-    <div className="bg-[#FFF8F0] min-h-screen">
+    <div className="bg-cream min-h-screen">
       {/* Hero */}
       <section className="relative h-64 flex items-end pb-12 overflow-hidden">
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&h=500&fit=crop&auto=format&q=80"
@@ -50,7 +50,7 @@ export default function Gallery() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-[#F77F00] text-sm font-semibold uppercase tracking-widest">Visual Journey</span>
+            <span className="text-secondary text-sm font-semibold uppercase tracking-widest">Visual Journey</span>
             <h1 className="text-5xl font-bold text-white mt-1">Our Gallery</h1>
           </motion.div>
         </div>
@@ -65,8 +65,8 @@ export default function Gallery() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-[#0D5969] text-white shadow-md'
-                  : 'bg-white text-[#0D5969] hover:bg-[#0D5969]/10 shadow-sm'
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-white text-primary hover:bg-primary/10 shadow-sm'
               }`}
             >
               {cat.label}
