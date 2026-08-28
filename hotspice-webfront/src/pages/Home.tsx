@@ -136,20 +136,6 @@ export default function Home() {
             className="w-full h-full object-cover"
             style={{ filter: 'saturate(1.08) contrast(1.04)' }}
           />
-          {/* Scrim is brand teal rather than black - black flattens the photo
-              into grey, the teal keeps it warm. Heavy at the top and bottom
-              where the navbar and stats row need contrast, open through the
-              middle so the dish stays visible. */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-darkest/85 via-primary-darkest/20 to-primary-darkest/90" />
-          {/* A pool of shade behind the copy only, so the headline holds its
-              contrast without dimming the whole frame. */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(ellipse 64% 54% at 50% 45%, rgba(6,47,56,0.74) 0%, rgba(6,47,56,0.38) 52%, transparent 78%)',
-            }}
-          />
         </div>
 
         {/* Hero Content */}
