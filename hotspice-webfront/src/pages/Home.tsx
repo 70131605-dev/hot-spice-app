@@ -154,7 +154,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 [text-shadow:0_2px_18px_rgba(6,47,56,0.55)]"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 [text-shadow:0_2px_8px_rgba(6,47,56,0.85),0_4px_28px_rgba(6,47,56,0.6)]"
           >
             Delicious Food,{' '}
             <span className="relative">
@@ -167,7 +167,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_1px_12px_rgba(6,47,56,0.6)]"
+            className="text-lg sm:text-xl text-white max-w-2xl mx-auto mb-10 leading-relaxed [text-shadow:0_2px_6px_rgba(6,47,56,0.9),0_2px_20px_rgba(6,47,56,0.7)]"
           >
             Where world-class chefs transform the finest ingredients into unforgettable dining moments. Every plate tells a story worth savoring.
           </motion.p>
@@ -204,9 +204,9 @@ export default function Home() {
               { value: '50K+', label: 'Happy Guests' },
               { value: '120+', label: 'Menu Items' },
             ].map((s) => (
-              <div key={s.label} className="text-center">
+              <div key={s.label} className="text-center [text-shadow:0_1px_6px_rgba(6,47,56,0.9)]">
                 <div className="text-2xl font-bold text-white">{s.value}{s.suffix}</div>
-                <div className="text-xs text-white/50 mt-0.5">{s.label}</div>
+                <div className="text-xs text-white/75 mt-0.5">{s.label}</div>
               </div>
             ))}
           </motion.div>
